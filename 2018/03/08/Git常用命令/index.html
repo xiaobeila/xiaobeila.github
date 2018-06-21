@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="Git 中 SSH key 生成步骤1$ ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; 添加一个新源1git remote add temp git@code.fq960.com:fq/fangquan.git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git 学习">
+<meta property="og:title" content="Git常用命令">
 <meta property="og:url" content="http://yoursite.com/2018/03/08/Git常用命令/index.html">
 <meta property="og:site_name" content="Xiao丶メ北er">
-<meta property="og:description" content="Git 中 SSH key 生成步骤1$ ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; 添加一个新源1git remote add temp git@code.fq960.com:fq/fangquan.git">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-10T02:55:10.299Z">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493224022490&di=4b9c36844b17e0c6116d1fd5aa883baf&imgtype=0&src=http%3A%2F%2Fimages.cnblogs.com%2Fcnblogs_com%2Fqyf404%2F612381%2Fo_git-logo.png">
+<meta property="og:updated_time" content="2018-06-21T10:25:13.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 学习">
-<meta name="twitter:description" content="Git 中 SSH key 生成步骤1$ ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot; 添加一个新源1git remote add temp git@code.fq960.com:fq/fangquan.git">
+<meta name="twitter:title" content="Git常用命令">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493224022490&di=4b9c36844b17e0c6116d1fd5aa883baf&imgtype=0&src=http%3A%2F%2Fimages.cnblogs.com%2Fcnblogs_com%2Fqyf404%2F612381%2Fo_git-logo.png">
 
 
 
@@ -125,7 +124,7 @@
 
 
 
-  <title>git 学习 | Xiao丶メ北er</title>
+  <title>Git常用命令 | Xiao丶メ北er</title>
   
 
 
@@ -249,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git 学习</h1>
+          <h1 class="post-title" itemprop="name headline">Git常用命令</h1>
         
 
         <div class="post-meta">
@@ -299,69 +298,18 @@
       
 
       
-        <h3 id="Git-中-SSH-key-生成步骤"><a href="#Git-中-SSH-key-生成步骤" class="headerlink" title="Git 中 SSH key 生成步骤"></a>Git 中 SSH key 生成步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="添加一个新源"><a href="#添加一个新源" class="headerlink" title="添加一个新源"></a>添加一个新源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add temp git@code.fq960.com:fq/fangquan.git</span><br></pre></td></tr></table></figure>
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1493224022490&amp;di=4b9c36844b17e0c6116d1fd5aa883baf&amp;imgtype=0&amp;src=http%3A%2F%2Fimages.cnblogs.com%2Fcnblogs_com%2Fqyf404%2F612381%2Fo_git-logo.png" alt="git图片"></p>
 <a id="more"></a>
-<h3 id="如何把本地的项目同新建的git关联起来"><a href="#如何把本地的项目同新建的git关联起来" class="headerlink" title="如何把本地的项目同新建的git关联起来"></a>如何把本地的项目同新建的git关联起来</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commint -m “init”</span><br><span class="line">git remote add origin 你的github仓库地址</span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line">git查看远程的地址</span><br><span class="line">$ git remote -v</span><br><span class="line"></span><br><span class="line">git修改源</span><br><span class="line">$ git remote set-url origin [GIT URL]</span><br><span class="line"></span><br><span class="line">删除源</span><br><span class="line">$ git remote rm origin</span><br></pre></td></tr></table></figure>
+<h3 id="Git-中-SSH-key-生成步骤"><a href="#Git-中-SSH-key-生成步骤" class="headerlink" title="Git 中 SSH key 生成步骤"></a>Git 中 SSH key 生成步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">初始化新版本库：git init</span><br><span class="line">全局设置：git config --global user.name &quot;xiao&quot;  git config --global user.email &quot;xiao.qq.com&quot;</span><br><span class="line">克隆版本库：git clone &quot;url&quot;</span><br><span class="line">查看分支：git branch</span><br><span class="line">创建分支：git branch branch_nema</span><br><span class="line">切换分支：git checkout branch_name</span><br><span class="line">创建+切换分支：git checkout -b branch_name</span><br><span class="line">合并某分支到当前分支：git merge branch_name</span><br><span class="line">重命名分支：git branch -m branch_name branch_new_name //不会覆盖已经存在的分支</span><br><span class="line">重命名分支：git branch -M branch_name branch_new_name //会覆盖已经存在的分支</span><br><span class="line">删除分支：git branch -d branch_name </span><br><span class="line">强制删除分支： git branch -D branch_name</span><br><span class="line">删除远程分支： git push origin : branch_name //可以使用这种语法，推送一个空分支到远程分支，其实就相当于删除远程分支</span><br><span class="line">拉取代码：git pull orgin branch_name</span><br><span class="line">查看更改：git status</span><br><span class="line">查看更改细节：git diff file_name</span><br><span class="line">查看谁修改过代码：git blame filename</span><br><span class="line">回到上次修改：git reset --hard</span><br><span class="line">添加单个文件：git add filename.js</span><br><span class="line">添加所有js文件：git add *.js</span><br><span class="line">添加所有文件：git add .</span><br><span class="line">提交添加的文件：git commit -m &quot;your description about this branch&quot;</span><br><span class="line">提交单个文件：git commit -m &quot;your description about this branch&quot; filename.js</span><br><span class="line">push分支：git push orgin your_branch_name</span><br><span class="line">暂存当前分支内容：git stash</span><br><span class="line">查看历史记录：git log</span><br><span class="line">创建标签：git tag 1.0.0  //标签无法重命名</span><br><span class="line">显示标签列表：git tag</span><br><span class="line">切出标签：git checkout 1.0.0</span><br><span class="line">删除标签：git tag -d 1.0.0</span><br><span class="line">查看git远程地址：git remote -v</span><br><span class="line">添加一个新源： git remote add temp [GIT URL]</span><br><span class="line">更改远程git地址：git remote set-url origin [GIT URL]</span><br><span class="line">删除源：git remote rm origin</span><br><span class="line">提交内容修改：git commit --amend</span><br></pre></td></tr></table></figure>
 <h3 id="提交到了错误的分支上的处理"><a href="#提交到了错误的分支上的处理" class="headerlink" title="提交到了错误的分支上的处理"></a>提交到了错误的分支上的处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">第一种.</span><br><span class="line"># 取消最新的提交，然后保留现场原状</span><br><span class="line">git reset HEAD~</span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"># 切换到正确的分支</span><br><span class="line">git checkout name-of-the-correct-branch</span><br><span class="line">git stash pop</span><br><span class="line">git add .    # 或添加特定文件</span><br><span class="line">git commit -m &quot;你的提交说明&quot;</span><br><span class="line"># 现在你已经提交到正确的分支上了</span><br><span class="line"></span><br><span class="line">第二种.</span><br><span class="line">git co master</span><br><span class="line">git co -b feature-xb-26.2</span><br><span class="line">git cherry-pick 7b92f99473776d973c585b37175652659c2ea4b7</span><br><span class="line">git ci -m &apos;首页Enter事件添加&apos;</span><br><span class="line">git push temp feature-xb-26.2</span><br></pre></td></tr></table></figure>
-<h1 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h1><p>$ git config –global alias.co checkout<br>$ git config –global alias.ci commit<br>$ git config –global alias.br branch<br>$ git config –global alias.st status</p>
-<h2 id="切换到dev分支-将远程的dev最新内容拉取下来"><a href="#切换到dev分支-将远程的dev最新内容拉取下来" class="headerlink" title="切换到dev分支, 将远程的dev最新内容拉取下来"></a>切换到dev分支, 将远程的dev最新内容拉取下来</h2><p>git fetch origin dev:issues/#663  拉取最新dev，并创建分支</p>
-<p>git checkout issues/#663</p>
+<h3 id="命令行简写"><a href="#命令行简写" class="headerlink" title="命令行简写"></a>命令行简写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global alias.co checkout</span><br><span class="line">$ git config --global alias.ci commit</span><br><span class="line">$ git config --global alias.br branch</span><br><span class="line">$ git config --global alias.st status</span><br></pre></td></tr></table></figure>
+<h3 id="将远程的dev最新内容拉取下来"><a href="#将远程的dev最新内容拉取下来" class="headerlink" title="将远程的dev最新内容拉取下来"></a>将远程的dev最新内容拉取下来</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin dev:issues/#663  拉取最新dev，并创建分支</span><br><span class="line"></span><br><span class="line">git checkout issues/#663</span><br></pre></td></tr></table></figure>
 <h3 id="切换之前的内容"><a href="#切换之前的内容" class="headerlink" title="切换之前的内容"></a>切换之前的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 21ae772cb7690c876c8ce8bba16519dd674755b2</span><br></pre></td></tr></table></figure>
-<p>###git</p>
-<p>git branch 获取当前分之</p>
-<p>git checkout issues/#94 切换分之</p>
-<p>git status 查看修改的文件</p>
-<p>git checkout . 当前分之不要的删除</p>
-<p>git pull –rebase origin issues/#74 拉去远程特性分之</p>
-<p>git push 提交</p>
-<p>###分之提交</p>
-<p>git status</p>
-<p>git add .</p>
-<p>git commit -m “默认值修改 (#refs 132)”</p>
-<p>git commit -m “登录修改(refs #74)”</p>
-<p>git rebase –continue</p>
-<p>git push 提交</p>
-<p>git pull –rebase origin issues/#74 push不成功</p>
-<p>git push  提交</p>
-<p>###提交</p>
-<p>git status</p>
-<p>git add .</p>
-<p>git commit -m “前端修改(refs #203)”;</p>
-<p>git pull –rebase origin dev</p>
-<p>git push</p>
-<p>###解决冲突</p>
-<p>git rebase –abort</p>
-<p>git pull –rebase origin dev 远程拉去dev</p>
-<p>both_modified</p>
-<p>git add .</p>
-<p>git rebase –contine</p>
-<p>git add .</p>
-<p>git rebase –continue</p>
-<p>git push -f origin issues/#159</p>
-<p>###解决冲突2</p>
-<p>切换到dev分支, 将远程的dev最新内容拉取下来</p>
-<p>git checkout dev</p>
-<p>git pull origin dev</p>
-<ol>
-<li>将dev最新代码合并到特性分支</li>
-</ol>
-<p>git checkout issues/#ID</p>
-<p>git merge dev (这里合并时,就会终端,需要手动合并)</p>
-<p>both_modified就是冲突的文件</p>
-<ol>
-<li>手动解决冲突,  解决一个文件,就添加一个(git add /path/to/file)</li>
-</ol>
-<p>所有冲突文件解决完后, 提交(可以用图形 或者命令行 git commit)</p>
-<ol>
-<li>推送到远程<br>git push origin issues/#ID</li>
-</ol>
-<p>###git后悔药<br>git commit –amend</p>
-<h3 id="git修改提交的用户名和Email"><a href="#git修改提交的用户名和Email" class="headerlink" title="git修改提交的用户名和Email"></a>git修改提交的用户名和Email</h3><p>git config –global user.name “xiao”</p>
-<p>(4). 推送到远程</p>
-<p>git push origin issues/#ID</p>
-<p>###解决冲突</p>
-<h1 id="tig-查看git提交分支"><a href="#tig-查看git提交分支" class="headerlink" title="tig 查看git提交分支"></a>tig 查看git提交分支</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install tig</span><br><span class="line"></span><br><span class="line">j 向下 k 向上</span><br><span class="line">git remote -v 查看git仓库</span><br></pre></td></tr></table></figure>
+<h3 id="提交流程"><a href="#提交流程" class="headerlink" title="提交流程"></a>提交流程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &quot;前端修改(refs #203)&quot;;</span><br><span class="line"></span><br><span class="line">git pull --rebase origin dev</span><br><span class="line"></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin dev   与远程dev分支同步</span><br><span class="line"></span><br><span class="line">both_modified   为冲突文件</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git rebase --contine</span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git rebase --continue</span><br><span class="line">----------</span><br><span class="line"></span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+<h3 id="解决冲突2"><a href="#解决冲突2" class="headerlink" title="解决冲突2"></a>解决冲突2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1.切换到dev分支, 将远程的dev最新内容拉取下来</span><br><span class="line"></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line">git pull origin dev</span><br><span class="line"></span><br><span class="line">2. 将dev最新代码合并到特性分支</span><br><span class="line"></span><br><span class="line">git checkout issues/#ID</span><br><span class="line"></span><br><span class="line">git merge dev (这里合并时,就会终端,需要手动合并)</span><br><span class="line"></span><br><span class="line">both_modified就是冲突的文件</span><br><span class="line"></span><br><span class="line">3. 手动解决冲突,  解决一个文件,就添加一个(git add /path/to/file)</span><br><span class="line"></span><br><span class="line">所有冲突文件解决完后, 提交(可以用图形 或者命令行 git commit)</span><br><span class="line"></span><br><span class="line">4. 推送到远程</span><br><span class="line">git push origin issues/#ID</span><br></pre></td></tr></table></figure>
+<h3 id="使用tig，查看git提交分支内容"><a href="#使用tig，查看git提交分支内容" class="headerlink" title="使用tig，查看git提交分支内容"></a>使用tig，查看git提交分支内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install tig</span><br><span class="line"></span><br><span class="line">j 向下 k 向上</span><br><span class="line">git remote -v 查看Git仓库</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -529,7 +477,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-中-SSH-key-生成步骤"><span class="nav-number">1.</span> <span class="nav-text">Git 中 SSH key 生成步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加一个新源"><span class="nav-number">2.</span> <span class="nav-text">添加一个新源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何把本地的项目同新建的git关联起来"><span class="nav-number">3.</span> <span class="nav-text">如何把本地的项目同新建的git关联起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交到了错误的分支上的处理"><span class="nav-number">4.</span> <span class="nav-text">提交到了错误的分支上的处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简写"><span class="nav-number"></span> <span class="nav-text">简写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#切换到dev分支-将远程的dev最新内容拉取下来"><span class="nav-number"></span> <span class="nav-text">切换到dev分支, 将远程的dev最新内容拉取下来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换之前的内容"><span class="nav-number">1.</span> <span class="nav-text">切换之前的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git修改提交的用户名和Email"><span class="nav-number">2.</span> <span class="nav-text">git修改提交的用户名和Email</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tig-查看git提交分支"><span class="nav-number"></span> <span class="nav-text">tig 查看git提交分支</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-中-SSH-key-生成步骤"><span class="nav-number">1.</span> <span class="nav-text">Git 中 SSH key 生成步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git常用命令"><span class="nav-number"></span> <span class="nav-text">Git常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交到了错误的分支上的处理"><span class="nav-number">1.</span> <span class="nav-text">提交到了错误的分支上的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行简写"><span class="nav-number">2.</span> <span class="nav-text">命令行简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将远程的dev最新内容拉取下来"><span class="nav-number">3.</span> <span class="nav-text">将远程的dev最新内容拉取下来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换之前的内容"><span class="nav-number">4.</span> <span class="nav-text">切换之前的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交流程"><span class="nav-number">5.</span> <span class="nav-text">提交流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突"><span class="nav-number">6.</span> <span class="nav-text">解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突2"><span class="nav-number">7.</span> <span class="nav-text">解决冲突2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用tig，查看git提交分支内容"><span class="nav-number">8.</span> <span class="nav-text">使用tig，查看git提交分支内容</span></a></li></ol></div>
             
 
           </div>
