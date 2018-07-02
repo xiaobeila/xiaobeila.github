@@ -1,7 +1,8 @@
 ---
 title: Git常用命令
 date: 2018-03-08 15:11:48
-tags:
+categories: "知识点"
+tags: [Git,知识点]
 ---
 
 ![git图片](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493224022490&di=4b9c36844b17e0c6116d1fd5aa883baf&imgtype=0&src=http%3A%2F%2Fimages.cnblogs.com%2Fcnblogs_com%2Fqyf404%2F612381%2Fo_git-logo.png)

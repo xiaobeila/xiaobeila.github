@@ -1,6 +1,6 @@
 ---
-title: categories
-date: 日期
-type: "categories"
+title: Categories
+date: 2018-07-02 15:00:44
+layout: "categories"
 comments: false
 ---
