@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript中的深拷贝和浅拷贝 | 前端博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="JavaScript" />
+  
+  
+  
+  
+  <meta name="description" content="浅拷贝和深拷贝的区别和实现方法？ 首先，浅拷贝和深拷贝都只针对于像Object， Array这样的复杂对象， 区别：浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的深拷贝和浅拷贝">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/JavaScript中的深拷贝和浅拷贝/index.html">
+<meta property="og:site_name" content="前端博客">
+<meta property="og:description" content="浅拷贝和深拷贝的区别和实现方法？ 首先，浅拷贝和深拷贝都只针对于像Object， Array这样的复杂对象， 区别：浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-09T02:09:40.774Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的深拷贝和浅拷贝">
+<meta name="twitter:description" content="浅拷贝和深拷贝的区别和实现方法？ 首先，浅拷贝和深拷贝都只针对于像Object， Array这样的复杂对象， 区别：浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制">
+  
+    <link rel="alternate" href="/atom.xml" title="前端博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-JavaScript中的深拷贝和浅拷贝" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      JavaScript中的深拷贝和浅拷贝
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/07/09/JavaScript中的深拷贝和浅拷贝/" class="article-date">
+	  <time datetime="2018-07-09T01:16:46.000Z" itemprop="datePublished">2018-07-09</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/JavaScript模块化/">JavaScript模块化</a><a class="article-category-link" href="/categories/JavaScript模块化/前端之巅/">前端之巅</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>浅拷贝和深拷贝的区别和实现方法？</p>
+<p>首先，浅拷贝和深拷贝都只针对于像Object， Array这样的复杂对象，</p>
+<p>区别：浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制</p>
+<a id="more"></a>
+<h3 id="在说深拷贝与浅拷贝前，我们先看两个简单的案例："><a href="#在说深拷贝与浅拷贝前，我们先看两个简单的案例：" class="headerlink" title="在说深拷贝与浅拷贝前，我们先看两个简单的案例："></a>在说深拷贝与浅拷贝前，我们先看两个简单的案例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//案例1</span><br><span class="line">var num1 = 1, num2 = num1;</span><br><span class="line">console.log(num1) //1</span><br><span class="line">console.log(num2) //1</span><br><span class="line"></span><br><span class="line">num2 = 2; //修改num2</span><br><span class="line">console.log(num1) //1</span><br><span class="line">console.log(num2) //2</span><br><span class="line"></span><br><span class="line">//案例2</span><br><span class="line">var obj1 = &#123;x: 1, y: 2&#125;, obj2 = obj1;</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: 2&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 1, y: 2&#125;</span><br><span class="line"></span><br><span class="line">obj2.x = 2; //修改obj2.x</span><br><span class="line">console.log(obj1) //&#123;x: 2, y: 2&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 2, y: 2&#125;</span><br></pre></td></tr></table></figure>
+<p>按照常规思维，obj1应该和num1一样，不会因为另外一个值的改变而改变，而这里的obj1 却随着obj2的改变而改变了。同样是变量，为什么表现不一样呢？这就要引入JS中基本类型和引用类型的概念了。</p>
+<h3 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ECMAScript变量可能包含两种不同数据类型的值：基本类型值和引用类型值。基本类型值指的是那些保存在栈内存中的简单数据段，即这种值完全保存在内存中的一个位置。而引用类型值是指那些保存堆内存中的对象，意思是变量中保存的实际上只是一个指针，这个指针指向内存中的另一个位置，该位置保存对象。</span><br></pre></td></tr></table></figure>
+<p>打个比方，基本类型和引用类型在赋值上的区别可以按“连锁店”和“单店”来理解：基本类型赋值等于在一个新的地方安装连锁店的规范标准新开一个分店，新开的店与其他旧店互不相关，各自运营；而引用类型赋值相当于一个店有两把钥匙，交给两个老板同时管理，两个老板的行为都有可能对一间店的运营造成影响。</p>
+<p>上面清晰明了的介绍了基本类型和引用类型的定义和区别。目前基本类型有：Boolean、Null、Undefined、Number、String、Symbol，引用类型有：Object、Array、Function。之所以说“目前”，因为Symbol就是ES6才出来的，之后也可能会有新的类型出来。</p>
+<p>再回到前面的案例，案例1中的值为基本类型，案例2中的值为引用类型。案例2中的赋值就是典型的浅拷贝，并且深拷贝与浅拷贝的概念只存在于引用类型。</p>
+<h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><p>既然已经知道了深拷贝与浅拷贝的来由，那么该如何实现深拷贝？我们先分别看看Array和Object自有方法是否支持：</p>
+<p>Array</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1, 2], arr2 = arr1.slice();</span><br><span class="line">console.log(arr1); //[1, 2]</span><br><span class="line">console.log(arr2); //[1, 2]</span><br><span class="line"></span><br><span class="line">arr2[0] = 3; //修改arr2</span><br><span class="line">console.log(arr1); //[1, 2]</span><br><span class="line">console.log(arr2); //[3, 2]</span><br></pre></td></tr></table></figure>
+<h3 id="此时，arr2的修改并没有影响到arr1，看来深拷贝的实现并没有那么难嘛。我们把arr1改成二维数组再来看看："><a href="#此时，arr2的修改并没有影响到arr1，看来深拷贝的实现并没有那么难嘛。我们把arr1改成二维数组再来看看：" class="headerlink" title="此时，arr2的修改并没有影响到arr1，看来深拷贝的实现并没有那么难嘛。我们把arr1改成二维数组再来看看："></a>此时，arr2的修改并没有影响到arr1，看来深拷贝的实现并没有那么难嘛。我们把arr1改成二维数组再来看看：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1, 2, [3, 4]], arr2 = arr1.slice();</span><br><span class="line">console.log(arr1); //[1, 2, [3, 4]]</span><br><span class="line">console.log(arr2); //[1, 2, [3, 4]]</span><br><span class="line"></span><br><span class="line">arr2[2][1] = 5; </span><br><span class="line">console.log(arr1); //[1, 2, [3, 5]]</span><br><span class="line">console.log(arr2); //[1, 2, [3, 5]]</span><br></pre></td></tr></table></figure>
+<p>咦，arr2又改变了arr1，看来slice()只能实现一维数组的深拷贝。</p>
+<p>具备同等特性的还有：concat、Array.from() 。</p>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>1.Object.assign()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;x: 1, y: 2&#125;, obj2 = Object.assign(&#123;&#125;, obj1);</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: 2&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 1, y: 2&#125;</span><br><span class="line"></span><br><span class="line">obj2.x = 2; //修改obj2.x</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: 2&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 2, y: 2&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;</span><br><span class="line">    x: 1, </span><br><span class="line">    y: &#123;</span><br><span class="line">        m: 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: &#123;m: 1&#125;&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 1, y: &#123;m: 1&#125;&#125;</span><br><span class="line"></span><br><span class="line">obj2.y.m = 2; //修改obj2.y.m</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: &#123;m: 2&#125;&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 2, y: &#123;m: 2&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>经测试，Object.assign()也只能实现一维对象的深拷贝。</p>
+<p>2.JSON.parse(JSON.stringify(obj))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;</span><br><span class="line">    x: 1, </span><br><span class="line">    y: &#123;</span><br><span class="line">        m: 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var obj2 = JSON.parse(JSON.stringify(obj1));</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: &#123;m: 1&#125;&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 1, y: &#123;m: 1&#125;&#125;</span><br><span class="line"></span><br><span class="line">obj2.y.m = 2; //修改obj2.y.m</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: &#123;m: 1&#125;&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 2, y: &#123;m: 2&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>JSON.parse(JSON.stringify(obj)) 看起来很不错，不过MDN文档 的描述有句话写的很清楚：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">undefined、任意的函数以及 symbol 值，在序列化过程中会被忽略（出现在非数组对象的属性值中时）或者被转换成 null（出现在数组中时）。</span><br></pre></td></tr></table></figure>
+<p>我们再来把obj1改造下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;</span><br><span class="line">    x: 1,</span><br><span class="line">    y: undefined,</span><br><span class="line">    z: function add(z1, z2) &#123;</span><br><span class="line">        return z1 + z2</span><br><span class="line">    &#125;,</span><br><span class="line">    a: Symbol(&quot;foo&quot;)</span><br><span class="line">&#125;;</span><br><span class="line">var obj2 = JSON.parse(JSON.stringify(obj1));</span><br><span class="line">console.log(obj1) //&#123;x: 1, y: undefined, z: ƒ, a: Symbol(foo)&#125;</span><br><span class="line">console.log(JSON.stringify(obj1)); //&#123;&quot;x&quot;:1&#125;</span><br><span class="line">console.log(obj2) //&#123;x: 1&#125;</span><br></pre></td></tr></table></figure>
+<p>发现，在将obj1进行JSON.stringify()序列化的过程中，y、z、a都被忽略了，也就验证了MDN文档的描述。既然这样，那JSON.parse(JSON.stringify(obj))的使用也是有局限性的，不能深拷贝含有undefined、function、symbol值的对象，不过JSON.parse(JSON.stringify(obj))简单粗暴，已经满足90%的使用场景了。</p>
+<p>经过验证，我们发现JS 提供的自有方法并不能彻底解决Array、Object的深拷贝问题。只能祭出大杀器：递归</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(obj) &#123;</span><br><span class="line">    // 创建一个新对象</span><br><span class="line">    let result = &#123;&#125;</span><br><span class="line">    let keys = Object.keys(obj),</span><br><span class="line">        key = null,</span><br><span class="line">        temp = null;</span><br><span class="line"></span><br><span class="line">    for (let i = 0; i &lt; keys.length; i++) &#123;</span><br><span class="line">        key = keys[i];    </span><br><span class="line">        temp = obj[key];</span><br><span class="line">        // 如果字段的值也是一个对象则递归操作</span><br><span class="line">        if (temp &amp;&amp; typeof temp === &apos;object&apos;) &#123;</span><br><span class="line">            result[key] = deepCopy(temp);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">        // 否则直接赋值给新对象</span><br><span class="line">            result[key] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var obj1 = &#123;</span><br><span class="line">    x: &#123;</span><br><span class="line">        m: 1</span><br><span class="line">    &#125;,</span><br><span class="line">    y: undefined,</span><br><span class="line">    z: function add(z1, z2) &#123;</span><br><span class="line">        return z1 + z2</span><br><span class="line">    &#125;,</span><br><span class="line">    a: Symbol(&quot;foo&quot;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var obj2 = deepCopy(obj1);</span><br><span class="line">obj2.x.m = 2;</span><br><span class="line"></span><br><span class="line">console.log(obj1); //&#123;x: &#123;m: 1&#125;, y: undefined, z: ƒ, a: Symbol(foo)&#125;</span><br><span class="line">console.log(obj2); //&#123;x: &#123;m: 2&#125;, y: undefined, z: ƒ, a: Symbol(foo)&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，递归完美的解决了前面遗留的所有问题，我们也可以用第三方库：jquery的$.extend和lodash的_.cloneDeep来解决深拷贝。上面虽然是用Object验证，但对于Array也同样适用，因为Array也是特殊的Object。</p>
+<p>到这里，深拷贝问题基本可以告一段落了。但是，还有一个非常特殊的场景：</p>
+<h4 id="循环引用拷贝"><a href="#循环引用拷贝" class="headerlink" title="循环引用拷贝"></a>循环引用拷贝</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;</span><br><span class="line">    x: 1, </span><br><span class="line">    y: 2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.z = obj1;</span><br><span class="line"></span><br><span class="line">var obj2 = deepCopy(obj1);</span><br></pre></td></tr></table></figure>
+<p>此时如果调用刚才的deepCopy函数的话，会陷入一个循环的递归过程，从而导致爆栈。jquery的$.extend也没有解决。解决这个问题也非常简单，只需要判断一个对象的字段是否引用了这个对象或这个对象的任意父级即可，修改一下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(obj, parent = null) &#123;</span><br><span class="line">    // 创建一个新对象</span><br><span class="line">    let result = &#123;&#125;;</span><br><span class="line">    let keys = Object.keys(obj),</span><br><span class="line">        key = null,</span><br><span class="line">        temp= null,</span><br><span class="line">        _parent = parent;</span><br><span class="line">    // 该字段有父级则需要追溯该字段的父级</span><br><span class="line">    while (_parent) &#123;</span><br><span class="line">        // 如果该字段引用了它的父级则为循环引用</span><br><span class="line">        if (_parent.originalParent === obj) &#123;</span><br><span class="line">            // 循环引用直接返回同级的新对象</span><br><span class="line">            return _parent.currentParent;</span><br><span class="line">        &#125;</span><br><span class="line">        _parent = _parent.parent;</span><br><span class="line">    &#125;</span><br><span class="line">    for (let i = 0; i &lt; keys.length; i++) &#123;</span><br><span class="line">        key = keys[i];</span><br><span class="line">        temp= obj[key];</span><br><span class="line">        // 如果字段的值也是一个对象</span><br><span class="line">        if (temp &amp;&amp; typeof temp=== &apos;object&apos;) &#123;</span><br><span class="line">            // 递归执行深拷贝 将同级的待拷贝对象与新对象传递给 parent 方便追溯循环引用</span><br><span class="line">            result[key] = DeepCopy(temp, &#123;</span><br><span class="line">                originalParent: obj,</span><br><span class="line">                currentParent: result,</span><br><span class="line">                parent: parent</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            result[key] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var obj1 = &#123;</span><br><span class="line">    x: 1, </span><br><span class="line">    y: 2</span><br><span class="line">&#125;;</span><br><span class="line">obj1.z = obj1;</span><br><span class="line"></span><br><span class="line">var obj2 = deepCopy(obj1);</span><br><span class="line">console.log(obj1); //太长了去浏览器试一下吧～ </span><br><span class="line">console.log(obj2); //太长了去浏览器试一下吧～</span><br></pre></td></tr></table></figure>
+<p>至此，已完成一个支持循环引用的深拷贝函数。当然，也可以使用lodash的_.cloneDeep噢～。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/WeChanQR.jpeg',
+  alipayImage: '/css/images/AliPayQR.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/02/前端优化/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端优化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在说深拷贝与浅拷贝前，我们先看两个简单的案例："><span class="nav-number">1.</span> <span class="nav-text">在说深拷贝与浅拷贝前，我们先看两个简单的案例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型和引用类型"><span class="nav-number">2.</span> <span class="nav-text">基本类型和引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深拷贝与浅拷贝"><span class="nav-number">3.</span> <span class="nav-text">深拷贝与浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#此时，arr2的修改并没有影响到arr1，看来深拷贝的实现并没有那么难嘛。我们把arr1改成二维数组再来看看："><span class="nav-number">4.</span> <span class="nav-text">此时，arr2的修改并没有影响到arr1，看来深拷贝的实现并没有那么难嘛。我们把arr1改成二维数组再来看看：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object"><span class="nav-number">5.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#循环引用拷贝"><span class="nav-number">5.1.</span> <span class="nav-text">循环引用拷贝</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 前端博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            前端博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 xiaobeila All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
