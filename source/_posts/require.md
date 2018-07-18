@@ -1,8 +1,8 @@
 ---
 title: require
 date: 2018-07-17 13:52:46
-categories: [JavaScript,前端之巅]
-tags: JavaScript
+categories: [前端之巅]
+tags: [前端之巅,JavaScript]
 ---
 
 ### 原始写法

@@ -1,7 +1,7 @@
 ---
 title: Git常用命令
 date: 2018-03-08 15:11:48
-categories: "知识点"
+categories: [知识点]
 tags: [Git,知识点]
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Axios
 date: 2018-06-29 15:16:46
-categories: "前端之巅"
-tags: '前端之巅'
+categories: [前端之巅]
+tags: [前端之巅,JavaScript]
 ---
 
 ## 详解

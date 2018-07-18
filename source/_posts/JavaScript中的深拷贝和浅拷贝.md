@@ -1,8 +1,8 @@
 ---
 title: JavaScript中的深拷贝和浅拷贝
 date: 2018-07-09 09:16:46
-categories: [JavaScript,前端之巅]
-tags: JavaScript
+categories: [前端之巅]
+tags: [前端之巅,JavaScript]
 ---
 
 浅拷贝和深拷贝的区别和实现方法？

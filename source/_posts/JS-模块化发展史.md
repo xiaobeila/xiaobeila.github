@@ -1,8 +1,8 @@
 ---
 title: JS 模块化发展史
 date: 2018-06-21 16:04:40
-tags: [JavaScript,前端之巅]
-categories: JavaScript
+categories: [前端之巅]
+tags: [前端之巅,JavaScript]
 ---
 
 回顾和记录一下javascrip的模块化发展史，主要是commonJS、AMD和应用AMD的requireJS、CMD和应用CMD的seaJS（不过现在seaJS貌似用的人挺少的，就不详细说明了）
