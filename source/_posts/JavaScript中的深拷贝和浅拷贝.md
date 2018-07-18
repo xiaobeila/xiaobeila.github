@@ -1,7 +1,7 @@
 ---
 title: JavaScript中的深拷贝和浅拷贝
 date: 2018-07-09 09:16:46
-categories: [JavaScript模块化,前端之巅]
+categories: [JavaScript,前端之巅]
 tags: JavaScript
 ---
 

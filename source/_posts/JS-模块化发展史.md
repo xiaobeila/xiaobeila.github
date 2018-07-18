@@ -1,7 +1,7 @@
 ---
 title: JS 模块化发展史
 date: 2018-06-21 16:04:40
-tags: [JavaScript模块化,前端之巅]
+tags: [JavaScript,前端之巅]
 categories: JavaScript
 ---
 
