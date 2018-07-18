@@ -3,22 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>category: javascript | 前端博客</title>
+  <title>项目管理-子模块添加 | 前端博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Git" />
   
   
   
-  <meta name="description" content="佛曰：与人为善，成就自己">
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端博客">
-<meta property="og:url" content="http://yoursite.com/categories/JavaScript/index.html">
+  
+  <meta name="description" content="场景某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。 Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。 它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目管理-子模块添加">
+<meta property="og:url" content="http://yoursite.com/2018/07/18/项目管理-子模块添加/index.html">
 <meta property="og:site_name" content="前端博客">
-<meta property="og:description" content="佛曰：与人为善，成就自己">
+<meta property="og:description" content="场景某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。 Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。 它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-18T02:14:23.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端博客">
-<meta name="twitter:description" content="佛曰：与人为善，成就自己">
+<meta name="twitter:title" content="项目管理-子模块添加">
+<meta name="twitter:description" content="场景某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。 Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。 它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。">
   
     <link rel="alternate" href="/atom.xml" title="前端博客" type="application/atom+xml">
   
@@ -57,8 +61,6 @@
   
 
   
-    <link rel="stylesheet" href="/css/archive.css" >
-  
   
   
     <link rel="stylesheet" href="/css/vdonate.css" >
@@ -68,7 +70,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -91,7 +93,7 @@
             
               <a class="brand" style="
                  margin-top: 0px;"  
-                 >
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
               </a>
             
@@ -160,86 +162,130 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
-  
-  
-  
+          <section id="main" style="float:none;"><article id="post-项目管理-子模块添加" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/07/17/require/" class="archive-article-date">
-	  <time datetime="2018-07-17T05:52:46.000Z" itemprop="datePublished">2018-07-17</time>
-	</a>
-
-      
+      <header class="article-header">
+        
   
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/07/17/require/">require</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      项目管理-子模块添加
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+    <div class="article-meta">
       
-	<a href="/2018/07/09/JavaScript中的深拷贝和浅拷贝/" class="archive-article-date">
-	  <time datetime="2018-07-09T01:16:46.000Z" itemprop="datePublished">2018-07-09</time>
+	<a href="/2018/07/18/项目管理-子模块添加/" class="article-date">
+	  <time datetime="2018-07-18T02:10:48.000Z" itemprop="datePublished">2018-07-18</time>
 	</a>
 
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/07/09/JavaScript中的深拷贝和浅拷贝/">JavaScript中的深拷贝和浅拷贝</a>
-    </h1>
-  
+    <a class="article-category-link" href="/categories/知识点/">知识点</a>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
       
-	<a href="/2018/06/21/JS-模块化发展史/" class="archive-article-date">
-	  <time datetime="2018-06-21T08:04:40.000Z" itemprop="datePublished">2018-06-21</time>
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
 	</a>
 
+    </div>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/06/21/JS-模块化发展史/">JS 模块化发展史</a>
-    </h1>
-  
+        <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。</p>
+<p>Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。 它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。<br><a id="more"></a></p>
+<h4 id="开始使用子模块"><a href="#开始使用子模块" class="headerlink" title="开始使用子模块"></a>开始使用子模块</h4><p>我们将要演示如何在一个被分成一个主项目与几个子项目的项目上开发。</p>
+<p>我们首先将一个已存在的 Git 仓库添加为正在工作的仓库的子模块。 你可以通过在 git submodule add 命令后面加上想要跟踪的项目 URL 来添加新的子模块。 在本例中，我们将会添加一个名为 “DbConnector” 的库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/chaconinc/DbConnector src/base</span><br></pre></td></tr></table></figure>
+<p>如果报错 already exists in the index</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached src/base</span><br></pre></td></tr></table></figure>
+<p>首先应当注意到新的 .gitmodules 文件。 该配置文件保存了项目 URL 与已经拉取的本地目录之间的映射：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat .gitmodules</span><br><span class="line"></span><br><span class="line">[submodule &quot;src/base&quot;]</span><br><span class="line">	path = src/base</span><br><span class="line">	url = https://github.com/missxiaolin/vue-assembly.git</span><br></pre></td></tr></table></figure>
+<p>如果有多个子模块，该文件中就会有多条记录。 要重点注意的是，该文件也像 .gitignore 文件一样受到（通过）版本控制。 它会和该项目的其他部分一同被拉取推送。 这就是克隆该项目的人知道去哪获得子模块的原因。</p>
+<p>其中有 DbConnector 目录，不过是空的。 你必须运行两个命令：git submodule init 用来初始化本地配置文件，而 git submodule update 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule init</span><br></pre></td></tr></table></figure>
+<p>现在 DbConnector 子目录是处在和之前提交时相同的状态了。</p>
+<p>不过还有更简单一点的方式。 如果给 git clone 命令传递 –recursive 选项，它就会自动初始化并更新仓库中的每一个子模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive https://github.com/missxiaolin/vue-admin-base.git</span><br></pre></td></tr></table></figure>
+<p>如果在此时提交，那么你会将子模块锁定为其他人更新时的新代码。</p>
+<p>如果你不想在子目录中手动抓取与合并，那么还有种更容易的方式。 运行 git submodule update –remote，Git 将会进入子模块然后抓取并更新。</p>
+<p>git submodule update –remote src/base</p>
+<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目</span><br><span class="line">git submodule add &lt;repository&gt; &lt;path&gt; 添加子模块</span><br><span class="line">git submodule init 初始化子模块</span><br><span class="line">git submodule update 更新子模块</span><br><span class="line">git submodule foreach git pull 拉取所有子模块</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
 
-    </header>
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/WeChanQR.jpeg',
+  alipayImage: '/css/images/AliPayQR.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/17/require/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">require</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
+<!-- Table of Contents -->
 
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景"><span class="nav-number">1.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开始使用子模块"><span class="nav-number">1.1.</span> <span class="nav-text">开始使用子模块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础命令"><span class="nav-number">2.</span> <span class="nav-text">基础命令</span></a></li></ol>
+    
+    </div>
+  </aside>
 </section>
         
       </div>
@@ -336,6 +382,8 @@
 
 
 
+  <script src="/js/dialog.js"></script>
+
 
 
 
@@ -419,6 +467,8 @@
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>
