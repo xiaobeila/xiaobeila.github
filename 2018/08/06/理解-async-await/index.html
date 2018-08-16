@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="前端博客">
 <meta property="og:description" content="ES7 提出的 async 函数，终于让 JavaScript 对于异步操作有了终极解决方案。No more callback hell。async 函数是 Generator 函数的语法糖。使用 关键字 async 来表示，在函数内部使用 await 来表示异步。想较于 Generator，Async 函数的改进在于下面四点：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-06T15:48:18.169Z">
+<meta property="og:updated_time" content="2018-08-06T15:49:01.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解 async&#x2F;await">
 <meta name="twitter:description" content="ES7 提出的 async 函数，终于让 JavaScript 对于异步操作有了终极解决方案。No more callback hell。async 函数是 Generator 函数的语法糖。使用 关键字 async 来表示，在函数内部使用 await 来表示异步。想较于 Generator，Async 函数的改进在于下面四点：">
@@ -198,10 +198,14 @@
         <p>ES7 提出的 <code>async</code> 函数，终于让 JavaScript 对于异步操作有了终极解决方案。No more callback hell。<br><code>async</code> 函数是 <code>Generator</code> 函数的语法糖。使用 关键字 <code>async</code> 来表示，在函数内部使用 <code>await</code> 来表示异步。<br>想较于 Generator，<code>Async</code> 函数的改进在于下面四点：</p>
 <a id="more"></a>
 <ul>
-<li><strong>内置执行器</strong>。Generator 函数的执行必须依靠执行器，而 <code>Aysnc</code> 函数自带执行器，调用方式跟普通函数的调用一样</li>
-<li><strong>更好的语义</strong>。<code>async</code> 和 <code>await</code> 相较于 <code>*</code> 和 <code>yield</code> 更加语义化</li>
-<li><strong>更广的适用性</strong>。<code>co</code> 模块约定，<code>yield</code> 命令后面只能是 Thunk 函数或 Promise对象。而 <code>async</code> 函数的 <code>await</code> 命令后面则可以是 Promise 或者 原始类型的值（Number，string，boolean，但这时等同于同步操作）</li>
-<li><strong>返回值是 Promise</strong>。<code>async</code> 函数返回值是 Promise 对象，比 Generator 函数返回的 Iterator 对象方便，可以直接使用 <code>then()</code> 方法进行调用</li>
+<li><p><strong>内置执行器</strong>。Generator 函数的执行必须依靠执行器，而 <code>Aysnc</code> 函数自带执行器，调用方式跟普通函数的调用一样</p>
+</li>
+<li><p><strong>更好的语义</strong>。<code>async</code> 和 <code>await</code> 相较于 <code>*</code> 和 <code>yield</code> 更加语义化</p>
+</li>
+<li><p><strong>更广的适用性</strong>。<code>co</code> 模块约定，<code>yield</code> 命令后面只能是 Thunk 函数或 Promise对象。而 <code>async</code> 函数的 <code>await</code> 命令后面则可以是 Promise 或者 原始类型的值（Number，string，boolean，但这时等同于同步操作）</p>
+</li>
+<li><p><strong>返回值是 Promise</strong>。<code>async</code> 函数返回值是 Promise 对象，比 Generator 函数返回的 Iterator 对象方便，可以直接使用 <code>then()</code> 方法进行调用</p>
+</li>
 </ul>
 <h2 id="Async-与其他异步操作的对比"><a href="#Async-与其他异步操作的对比" class="headerlink" title="Async 与其他异步操作的对比"></a>Async 与其他异步操作的对比</h2><p>先定义一个 Fetch 方法用于获取 github user 的信息：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchUser</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        fetch(<span class="string">'https://api.github.com/users/superman66'</span>)</span><br><span class="line">        .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">            resolve(data.json());</span><br><span class="line">        &#125;, (error) =&gt; &#123;</span><br><span class="line">            reject(error);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -288,6 +292,15 @@ var a = new Donate({
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/16/Mongoose快速入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Mongoose快速入门
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/28/promise学习笔记/" id="article-nav-older" class="article-nav-link-wrap">

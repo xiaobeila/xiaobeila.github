@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mongoose快速入门 | 前端博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端之巅JavaScript" />
+  
+  
+  
+  
+  <meta name="description" content="Mongoose是在node.js异步环境下对mongodb进行便捷操作的对象模型工具。本文将详细介绍如何使用Mongoose来操作MongoDB">
+<meta name="keywords" content="前端之巅,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongoose快速入门">
+<meta property="og:url" content="http://yoursite.com/2018/08/16/Mongoose快速入门/index.html">
+<meta property="og:site_name" content="前端博客">
+<meta property="og:description" content="Mongoose是在node.js异步环境下对mongodb进行便捷操作的对象模型工具。本文将详细介绍如何使用Mongoose来操作MongoDB">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-16T05:25:55.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mongoose快速入门">
+<meta name="twitter:description" content="Mongoose是在node.js异步环境下对mongodb进行便捷操作的对象模型工具。本文将详细介绍如何使用Mongoose来操作MongoDB">
+  
+    <link rel="alternate" href="/atom.xml" title="前端博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Mongoose快速入门" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Mongoose快速入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/08/16/Mongoose快速入门/" class="article-date">
+	  <time datetime="2018-08-16T03:24:49.000Z" itemprop="datePublished">2018-08-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/前端之巅/">前端之巅</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Mongoose是在node.js异步环境下对mongodb进行便捷操作的对象模型工具。本文将详细介绍如何使用Mongoose来操作MongoDB<br><a id="more"></a></p>
+<h1 id="Mongoose快速入门"><a href="#Mongoose快速入门" class="headerlink" title="Mongoose快速入门"></a>Mongoose快速入门</h1><h2 id="1-基础介绍"><a href="#1-基础介绍" class="headerlink" title="1. 基础介绍"></a>1. 基础介绍</h2><h3 id="1-1-安装-引用"><a href="#1-1-安装-引用" class="headerlink" title="1.1 安装 引用"></a>1.1 安装 引用</h3><p>启动数据库命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath=D:\Data\mongodb\_data</span><br></pre></td></tr></table></figure>
+<p><code>–dbpath</code>：指定数据存储位置</p>
+<p>连接本地的test数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&apos;mongoose&apos;);</span><br><span class="line"></span><br><span class="line">var db = mongoose.connect(&quot;mongodb://127.0.0.1:27017/test&quot;);</span><br><span class="line"></span><br><span class="line">db.connection.on(&quot;error&quot;, function (error) &#123;</span><br><span class="line">	console.log(&quot;数据库连接失败：&quot; + error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.connection.on(&quot;open&quot;, function () &#123;</span><br><span class="line">	console.log(&quot;------数据库连接成功！------&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">### 1.2 Schema简介</span><br><span class="line"></span><br><span class="line">Schema：一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力，仅仅只是数据库模型在程序片段中的一种表现，可以说是数据属性模型(传统意义的表结构)，又或着是&quot;集合&quot;的模型骨架。</span><br><span class="line"></span><br><span class="line">那如何去定义一个Schema呢，请看示例：</span><br></pre></td></tr></table></figure>
+<p>var mongoose = require(“mongoose”);</p>
+<p>var TestSchema = new mongoose.Schema({<br>    name : { type:String },//属性name,类型为String<br>    age  : { type:Number, default:0 },//属性age,类型为Number,默认为0<br>    time : { type:Date, default:Date.now },<br>    email: { type:String,default:’’}<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注：Schema定义集合结构（定义表的列）</span><br><span class="line"></span><br><span class="line">### 1.3 Model–操作数据库</span><br></pre></td></tr></table></figure></p>
+<p>var db = mongoose.connect(“mongodb://127.0.0.1:27017/test”);<br>// 创建Model<br>var TestModel = db.model(“test1”, TestSchema);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 1.4 Entity--给集合赋值</span><br></pre></td></tr></table></figure></p>
+<p>var TestEntity = new TestModel({<br>       name : “Lenka”,<br>       age  : 36,<br>   email: “<a href="mailto:lenka@qq.com" target="_blank" rel="noopener">lenka@qq.com</a>“<br>});</p>
+<p>console.log(TestEntity.name); // Lenka</p>
+<p>console.log(TestEntity.age); // 36<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 1.5 创建集合</span><br></pre></td></tr></table></figure></p>
+<p>//引入数据库模块<br>var mongoose = require(“mongoose”);</p>
+<p>//连接本地名为test的数据库，格式<br>//var db = mongoose.connect(“mongodb://user:pass@localhost:port/database”);<br>var db = mongoose.connect(“mongodb://127.0.0.1:27017/test”);</p>
+<p>//用Schema定义集合结构<br>var TestSchema = new mongoose.Schema({<br>    name : { type:String },<br>    age  : { type:Number, default:0 },<br>    email: { type:String },<br>    time : { type:Date, default:Date.now }<br>});</p>
+<p>//创建model,在内存中创建结构为TestSchema名为test1的集合<br>var TestModel = db.model(“test1”, TestSchema );</p>
+<p>//插入数据到内存中的test1集合<br>var TestEntity = new TestModel({<br>    name : “helloworld”,<br>    age  : 28,<br>    email: “<a href="mailto:helloworld@qq.com" target="_blank" rel="noopener">helloworld@qq.com</a>“<br>});</p>
+<p>//将test1写入到数据库中<br>TestEntity.save(function(error,doc){<br>if(error){<br>     console.log(“error :” + error);<br>}else{<br>     console.log(doc);<br>}<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">### 1.6 小结</span><br><span class="line"></span><br><span class="line">本章节学习了如何通过Mongoose去创建一个数据库&quot;集合&quot;，还有定义&quot;集合&quot;的基本组成结构并使其具有相应的操作数据库能力。</span><br><span class="line"></span><br><span class="line">简单回顾：</span><br><span class="line"></span><br><span class="line">- `Schema`：数据库集合的模型骨架，或者是数据属性模型传统意义的表结构。</span><br><span class="line"></span><br><span class="line">- `Model`：通过Schema构造而成，除了具有Schema定义的数据库骨架以外，还可以具体的操作数据库。</span><br><span class="line"></span><br><span class="line">- `Entity`：通过Model创建的实体，它也可以操作数据库。</span><br><span class="line"></span><br><span class="line">## 2. 增删改查</span><br><span class="line"></span><br><span class="line">### 2.1 查询</span><br><span class="line"></span><br><span class="line">`find查询：obj.find(查询条件,callback);`</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({},function(error,docs){<br>//若没有向find传递参数，默认的是显示所有文档<br>});</p>
+<p>Model.find({ “age”: 28 }, function (error, docs) {<br>    if(error){<br>        console.log(“error :” + error);<br>    }else{<br>        console.log(docs); //docs: age为28的所有文档<br>    }<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.2 model保存方法</span><br><span class="line"></span><br><span class="line">`Model.create(文档数据, callback))`</span><br></pre></td></tr></table></figure></p>
+<p>Model.create({ name:”model_create”, age:26}, function(error,doc){<br>    if(error) {<br>        console.log(error);<br>    } else {<br>        console.log(doc);<br>    }<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.3 entity保存方法</span><br><span class="line"></span><br><span class="line">`Entity.save(文档数据, callback))`</span><br></pre></td></tr></table></figure></p>
+<p>var Entity = new Model({name:”entity_save”,age: 27});</p>
+<p>Entity.save(function(error,doc) {<br>  if(error) {<br>        console.log(error);<br>    } else {<br>        console.log(doc);<br>    }<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">model调用的是create方法，entity调用的是save方法</span><br><span class="line"></span><br><span class="line">### 2.4 数据更新</span><br><span class="line"></span><br><span class="line">`obj.update(查询条件,更新对象,callback);`</span><br></pre></td></tr></table></figure></p>
+<p>var conditions = {name : ‘test_update’};</p>
+<p>var update = {$set : { age : 16 }};</p>
+<p>TestModel.update(conditions, update, function(error){<br>if(error) {<br>    console.log(error);<br>} else {<br>    console.log(‘Update success!’);<br>}<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">### 2.5 删除数据</span><br><span class="line"></span><br><span class="line">`obj.remove(查询条件,callback);`</span><br></pre></td></tr></table></figure></p>
+<p>var conditions = { name: ‘tom’ };</p>
+<p>TestModel.remove(conditions, function(error){<br>if(error) {<br>     console.log(error);<br>} else {<br>    console.log(‘Delete success!’);<br>}<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.6 小结</span><br><span class="line"></span><br><span class="line">- 查询：find查询返回符合条件一个、多个或者空数组文档结果。</span><br><span class="line"></span><br><span class="line">- 保存：model调用create方法，entity调用的save方法。</span><br><span class="line"></span><br><span class="line">- 更新：obj.update(查询条件,更新对象,callback)，根据条件更新相关数据。</span><br><span class="line"></span><br><span class="line">- 删除：obj.remove(查询条件,callback)，根据条件删除相关数据。</span><br><span class="line"></span><br><span class="line">## 3 简单查询</span><br><span class="line"></span><br><span class="line">### 3.1 find过滤查询</span><br><span class="line"></span><br><span class="line">`属性过滤 find(Conditions,field,callback);`</span><br><span class="line"></span><br><span class="line">field省略或为Null，则返回所有属性。</span><br></pre></td></tr></table></figure></p>
+<p>//返回只包含一个键值name、age的所有记录<br>Model.find({},{name:1, age:1, _id:0}，function(err,docs){<br>//docs 查询结果集<br>})<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">说明：我们只需要把显示的属性设置为大于零的数就可以，当然1是最好理解的，_id是默认返回，如果不要显示加上(&quot;_id&quot;:0)，但是，对其他不需要显示的属性且不是_id，如果设置为0的话将会抛异常或查询无果</span><br><span class="line"></span><br><span class="line">### 3.2 小结</span><br><span class="line"></span><br><span class="line">- `find`过滤查询 ：find查询时我们可以过滤返回结果所显示的属性个数。</span><br><span class="line"></span><br><span class="line">- `findOne`查询 ：只返回符合条件的首条文档数据。</span><br><span class="line"></span><br><span class="line">- `findById`查询：根据文档_id来查询文档。</span><br><span class="line"></span><br><span class="line">## 4. 高级查询</span><br><span class="line"></span><br><span class="line">### 4.1 大于、小于</span><br><span class="line"></span><br><span class="line">`$gt(&gt;)`、`$lt(&lt;)`、`$lte(&lt;=)`、`$gte(&gt;=)`</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({“age”:{“$gt”:18}},function(error,docs){<br>  //查询所有nage大于18的数据<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">### 4.2 不等于</span><br><span class="line"></span><br><span class="line">`$ne(!=)`</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({ age:{ $ne:24}},function(error,docs){<br>   //查询age不等于24的所有数据<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`$ne`可以匹配单个值，也可以匹配不同类型的值。</span><br><span class="line"></span><br><span class="line">### 4.3 匹配</span><br><span class="line"></span><br><span class="line">`$in` 包含、等于</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({ age:{ $in: 20}},function(error,docs){<br>  //查询age等于20的所有数据<br>});</p>
+<p>Model.find({ age:{$in:[20,30]}},function(error,docs){<br> //可以把多个值组织成一个数组<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">### 4.4 或者</span><br><span class="line"></span><br><span class="line">`$or`</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({“$or”:[{“name”:”yaya”},{“age”:28}]},function(error,docs){<br> //查询name为yaya或age为28的全部文档<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">### 4.5 存在</span><br><span class="line"></span><br><span class="line">`$exists`</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({name: {$exists: true}},function(error,docs){<br> //查询所有存在name属性的文档<br>});</p>
+<p>Model.find({telephone: {$exists: false}},function(error,docs){<br> //查询所有不存在telephone属性的文档<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 4.6 小结</span><br><span class="line"></span><br><span class="line">- `$gt(&gt;)`,`$lt(&lt;)`,`$lte(&lt;=)`,`$gte(&gt;=)`操作符：针对Number类型的查询具体超强的排除性。</span><br><span class="line"></span><br><span class="line">- `$ne(!=)`操作符：相当于不等于、不包含，查询时可根据单个或多个属性进行结果排除。</span><br><span class="line"></span><br><span class="line">- `$in`操作符：和$ne操作符用法相同，但意义相反。</span><br><span class="line"></span><br><span class="line">- `$or`操作符：可查询多个条件，只要满足其中一个就可返回结果值。</span><br><span class="line"></span><br><span class="line">- `$exists`操作符：主要用于判断某些属性是否存在。</span><br><span class="line"></span><br><span class="line">## 5. 游标</span><br><span class="line"></span><br><span class="line">### 5.1 简介</span><br><span class="line"></span><br><span class="line">数据库使用游标返回find的执行结果。客户端对游标的实现通常能够对最终结果进行有效的控制。可以限制结果的数量，略过部分结果，根据任意键按任意顺序的组合对结果进行各种排序，或者是执行其他一些强的操作。</span><br><span class="line"></span><br><span class="line">### 5.2 limit函数的基本用法</span><br><span class="line"></span><br><span class="line">限制数量：`find(Conditions,fields,options,callback);`</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({},null,{limit:20},function(err,docs){<br>    console.log(docs);<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 5.3 skip函数的基本用法</span><br><span class="line"></span><br><span class="line">skip函数和limit类似，都是对返回结果数量进行操作，不同的是skip函数的功能是略过指定数量的匹配结果，返回余下的查询结果。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">1.跳过数量：`find(Conditions,fields,options,callback);`</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({},null,{skip:4},function(err,docs){<br>    console.log(docs);<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果查询结果数量中少于4个的话，则不会返回任何结果。</span><br><span class="line"></span><br><span class="line">### 5.4 sort函数的基本用法</span><br><span class="line"></span><br><span class="line">sort函数可以将查询结果数据进行排序操作，该函数的参数是一个或多个键/值对，键代表要排序的键名，值代表排序的方向，1是升序，-1是降序。</span><br><span class="line"></span><br><span class="line">1.结果排序：`find(Conditions,fields,options,callback);`</span><br></pre></td></tr></table></figure></p>
+<p>Model.find({},null,{sort:{age:-1}},function(err,docs){<br> //查询所有数据，并按照age降序顺序返回数据docs<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 5.6 小结</span><br><span class="line"></span><br><span class="line">- `limit`函数：限制返回结果的数量。</span><br><span class="line"></span><br><span class="line">- `skip`函数：略过指定的返回结果数量。</span><br><span class="line"></span><br><span class="line">- `sort`函数：对返回结果进行有效排序。</span><br><span class="line"></span><br><span class="line">## 6. 属性方法</span><br><span class="line"></span><br><span class="line">### 6.1 实例方法</span><br><span class="line"></span><br><span class="line">有的时候，我们创造的Schema不仅要为后面的Model和Entity提供公共的属性，还要提供公共的方法.那怎么在Schema下创建一个实例方法呢，请看示例：</span><br></pre></td></tr></table></figure></p>
+<p>var mongoose = require(‘mongoose’);</p>
+<p>var saySchema = new mongoose.Schema({name : String});</p>
+<p>saySchema.method(‘say’, function () {</p>
+<p> console.log(‘Trouble Is A Friend’);</p>
+<p>})</p>
+<p>var say = mongoose.model(‘say’, saySchema);</p>
+<p>var lenka = new say();</p>
+<p>lenka.say(); //Trouble Is A Friend<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">### 6.2 Schema静态方法</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>var mongoose = require(“mongoose”);</p>
+<p>var db = mongoose.connect(“mongodb://127.0.0.1:27017/test”);</p>
+<p>var TestSchema = new mongoose.Schema({<br>name : { type:String },<br>age  : { type:Number, default:0 },<br>email: { type:String, default:”” },<br>time : { type:Date, default:Date.now }<br>});</p>
+<p>TestSchema.static(‘findByName’, function (name, callback) {<br>   return this.find({ name: name }, callback);<br>});</p>
+<p>var TestModel = db.model(“test1”, TestSchema );<br>TestModel.findByName(‘tom’, function (err, docs) {<br>//docs所有名字叫tom的文档结果集<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 6.3 Schema追加方法</span><br><span class="line"></span><br><span class="line">为Schema模型追加speak方法</span><br><span class="line"></span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></p>
+<p>var mongoose = require(“mongoose”);</p>
+<p>var db = mongoose.connect(“mongodb://127.0.0.1:27017/test”);</p>
+<p>var TestSchema = new mongoose.Schema({<br>name : { type:String },<br>age  : { type:Number, default:0 },<br>email: { type:String, default:”” },<br>time : { type:Date, default:Date.now }<br>});</p>
+<p>TestSchema.methods.speak = function(){<br> console.log(‘我的名字叫’+this.name);<br>}</p>
+<p>var TestModel = db.model(‘test1’,TestSchema);</p>
+<p>var TestEntity = new TestModel({name:’Lenka’});</p>
+<p>TestEntity.speak();//我的名字叫Lenka<br><code>`</code></p>
+<hr>
+<p>引用注释：</p>
+<p>作者：18820227745</p>
+<p>链接：<a href="https://cnodejs.org/topic/595d9ad5a4de5625080fe118" target="_blank" rel="noopener">https://cnodejs.org/topic/595d9ad5a4de5625080fe118</a></p>
+<p>來源：网站</p>
+<p>著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/WeChanQR.jpeg',
+  alipayImage: '/css/images/AliPayQR.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/06/理解-async-await/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">理解 async/await</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mongoose快速入门"><span class="nav-number">1.</span> <span class="nav-text">Mongoose快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基础介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基础介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-安装-引用"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 安装 引用</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 前端博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            前端博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 xiaobeila All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
