@@ -21,9 +21,9 @@ Mongoose是在node.js异步环境下对mongodb进行便捷操作的对象模型�
 
 ```
 mongod --dbpath=D:\Data\mongodb\_data
-```
 
-`–dbpath`：指定数据存储位置
+–dbpath：指定数据存储位置
+```
 
 连接本地的test数据库
 
@@ -64,6 +64,7 @@ var TestSchema = new mongoose.Schema({
 
 ```
 var db = mongoose.connect("mongodb://127.0.0.1:27017/test");
+
 // 创建Model
 var TestModel = db.model("test1", TestSchema);
 ```
@@ -126,11 +127,13 @@ if(error){
 
 简单回顾：
 
-- `Schema`：数据库集合的模型骨架，或者是数据属性模型传统意义的表结构。
+```
+Schema：数据库集合的模型骨架，或者是数据属性模型传统意义的表结构。
 
-- `Model`：通过Schema构造而成，除了具有Schema定义的数据库骨架以外，还可以具体的操作数据库。
+Model：通过Schema构造而成，除了具有Schema定义的数据库骨架以外，还可以具体的操作数据库。
 
-- `Entity`：通过Model创建的实体，它也可以操作数据库。
+Entity：通过Model创建的实体，它也可以操作数据库。
+```
 
 # 增删改查
 
@@ -194,11 +197,11 @@ var conditions = {name : 'test\_update'};
 var update = {$set : { age : 16 }};
 
 TestModel.update(conditions, update, function(error){
-if(error) {
-	console.log(error);
-} else {
-	console.log('Update success!');
-}
+	if(error) {
+		console.log(error);
+	} else {
+		console.log('Update success!');
+	}
 });
 ```
 	
@@ -210,11 +213,11 @@ if(error) {
 var conditions = { name: 'tom' };
 
 TestModel.remove(conditions, function(error){
-if(error) {
- 	console.log(error);
-} else {
-	console.log('Delete success!');
-}
+	if(error) {
+	 	console.log(error);
+	} else {
+		console.log('Delete success!');
+	}
 });
 ```
 
@@ -239,7 +242,7 @@ field省略或为Null，则返回所有属性。
 ```
 //返回只包含一个键值name、age的所有记录
 Model.find({},{name:1, age:1, \_id:0}，function(err,docs){
-//docs 查询结果集
+	//docs 查询结果集
 })
 ```
 
@@ -289,11 +292,11 @@ Model.find({ age:{ $ne:24}},function(error,docs){
 
 ```
 Model.find({ age:{ $in: 20}},function(error,docs){
-  //查询age等于20的所有数据
+ 	//查询age等于20的所有数据
 });
 
 Model.find({ age:{$in:[20,30]}},function(error,docs){
- //可以把多个值组织成一个数组
+	//可以把多个值组织成一个数组
 });
 ```
         
@@ -305,7 +308,7 @@ Model.find({ age:{$in:[20,30]}},function(error,docs){
 
 ```
 Model.find({"$or":[{"name":"yaya"},{"age":28}]},function(error,docs){
- //查询name为yaya或age为28的全部文档
+	//查询name为yaya或age为28的全部文档
 });
 ```
         
@@ -317,11 +320,11 @@ Model.find({"$or":[{"name":"yaya"},{"age":28}]},function(error,docs){
 
 ```
 Model.find({name: {$exists: true}},function(error,docs){
- //查询所有存在name属性的文档
+	//查询所有存在name属性的文档
 });
 
 Model.find({telephone: {$exists: false}},function(error,docs){
- //查询所有不存在telephone属性的文档
+	//查询所有不存在telephone属性的文档
 });
 ```
 
@@ -339,7 +342,7 @@ Model.find({telephone: {$exists: false}},function(error,docs){
 
 # 游标
 
-### 简介
+## 简介
 
 数据库使用游标返回find的执行结果。客户端对游标的实现通常能够对最终结果进行有效的控制。可以限制结果的数量，略过部分结果，根据任意键按任意顺序的组合对结果进行各种排序，或者是执行其他一些强的操作。
 
@@ -377,17 +380,19 @@ sort函数可以将查询结果数据进行排序操作，该函数的参数是�
 
 ```
 Model.find({},null,{sort:{age:-1}},function(err,docs){
- //查询所有数据，并按照age降序顺序返回数据docs
+	//查询所有数据，并按照age降序顺序返回数据docs
 });
 ```
 
 ## 小结
 
-- `limit`函数：限制返回结果的数量。
-
-- `skip`函数：略过指定的返回结果数量。
-
-- `sort`函数：对返回结果进行有效排序。
+```
+`limit`函数：限制返回结果的数量。
+	
+`skip`函数：略过指定的返回结果数量。
+	
+`sort`函数：对返回结果进行有效排序。
+```
 
 # 属性方法
 
