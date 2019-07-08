@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端知识备忘 | 前端博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="前端之巅JavaScript" />
+  
+  
+  
+  
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334封装请求类class HTTP &amp;#123;  constructor() &amp;#123;    this.baseRequestUrl = `$&amp;#123;app.globalData.fqBase&amp;#125;`;  &amp;#125;  request(&amp;#123;    url,">
+<meta name="keywords" content="前端之巅,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识备忘">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/前端知识备忘/index.html">
+<meta property="og:site_name" content="前端博客">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334封装请求类class HTTP &amp;#123;  constructor() &amp;#123;    this.baseRequestUrl = `$&amp;#123;app.globalData.fqBase&amp;#125;`;  &amp;#125;  request(&amp;#123;    url,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-08T14:42:10.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识备忘">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334封装请求类class HTTP &amp;#123;  constructor() &amp;#123;    this.baseRequestUrl = `$&amp;#123;app.globalData.fqBase&amp;#125;`;  &amp;#125;  request(&amp;#123;    url,">
+  
+    <link rel="alternate" href="/atom.xml" title="前端博客" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/avatar.jpg">
+  <link rel="apple-touch-icon" href="/css/images/avatar.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/avatar.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-前端知识备忘" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      前端知识备忘
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/08/前端知识备忘/" class="article-date">
+	  <time datetime="2019-07-08T14:41:49.000Z" itemprop="datePublished">2019-07-08</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/前端之巅/">前端之巅</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">封装请求类</span><br><span class="line">class HTTP &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this.baseRequestUrl = `$&#123;app.globalData.fqBase&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  request(&#123;</span><br><span class="line">    url,</span><br><span class="line">    data,</span><br><span class="line">    method</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">      this._request(url, resolve, reject, data, method)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _request(url, resolve, reject, data, method) &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: this.baseRequestUrl + url,</span><br><span class="line">      data: data,</span><br><span class="line">      header: &#123;</span><br><span class="line">        &apos;content-type&apos;: &apos;application/json&apos;,</span><br><span class="line">        &apos;X-Requested-With&apos;: &apos;XMLHttpRequest&apos;,</span><br><span class="line">      &#125;,</span><br><span class="line">      method: method ? method : &apos;POST&apos;,</span><br><span class="line">      dataType: &apos;json&apos;,</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        resolve(res.data)</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: (res) =&gt; &#123;</span><br><span class="line">        reject();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+### 添加水印
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;fieldset class=&quot;preview&quot;&gt;&lt;legend&gt;预览&lt;/legend&gt;&lt;/fieldset&gt;</span><br><span class="line">.preview&#123;</span><br><span class="line">	margin-top: 1em;</span><br><span class="line">	background: url(http://192.168.0.232:3000/images/draft.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function addWaterMarker(str)&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var can = document.createElement(&apos;canvas&apos;);</span><br><span class="line">var body = document.body;</span><br><span class="line"></span><br><span class="line">body.appendChild(can);</span><br><span class="line"></span><br><span class="line">can.width=400;</span><br><span class="line">can.height=200;</span><br><span class="line">can.style.display=&apos;none&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var cans = can.getContext(&apos;2d&apos;);</span><br><span class="line">cans.rotate(-20*Math.PI/180);</span><br><span class="line">cans.font = &quot;16px Microsoft JhengHei&quot;; </span><br><span class="line">cans.fillStyle = &quot;rgba(17, 17, 17, 0.50)&quot;;</span><br><span class="line">cans.textAlign = &apos;left&apos;; </span><br><span class="line">cans.textBaseline = &apos;Middle&apos;;</span><br><span class="line">cans.fillText(str,can.width/3,can.height/2);</span><br><span class="line"></span><br><span class="line">body.style.backgroundImage=&quot;url(&quot;+can.toDataURL(&quot;image/png&quot;)+&quot;)&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">addWaterMarker(&apos;大笨蛋&apos;)</span><br></pre></td></tr></table></figure>
+
+
+### ie兼容问题,强制使用ie浏览器使用最高版本内核
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;edge&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+
+### 前端优化系列之一：DNS预获取 dns-prefetch 提升页面载入速度
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DNS Prefetch，即DNS预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点： 一个是减少DNS的请求次数，另一个就是进行DNS预获取 。</span><br><span class="line"></span><br><span class="line">DNS 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。DNS Prefetching 是让具有此属性的域名不需要用户点击链接就在后台解析，而域名解析和内容载入是串行的网络操作，所以这个方式能 减少用户的等待时间，提升用户体验 。</span><br><span class="line"></span><br><span class="line">默认情况下浏览器会对页面中和当前域名（正在浏览网页的域名）不在同一个域的域名进行预获取，并且缓存结果，这就是隐式的 DNS Prefetch。如果想对页面中没有出现的域进行预获取，那么就要使用显示的 DNS Prefetch 了。</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</span><br><span class="line">后面覆盖前面</span><br></pre></td></tr></table></figure>
+
+
+## 获取浏览器URL中查询字符串中的参数？
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const u = fixWebLinkURL(decodeURIComponent(option.u))</span><br><span class="line"></span><br><span class="line">function fixWebLinkURL(url) &#123;</span><br><span class="line">  // 把 hash 放在最后面</span><br><span class="line">  let qs = `********`</span><br><span class="line">  let match = url.split(&apos;#&apos;)</span><br><span class="line">  if (match[1]) &#123;</span><br><span class="line">    qs += &apos;#&apos; + match[1]</span><br><span class="line">    url = match[0]</span><br><span class="line">  &#125;</span><br><span class="line">  return ~url.indexOf(&apos;?&apos;) ? `$&#123;url&#125;&amp;$&#123;qs&#125;` : `$&#123;url&#125;?$&#123;qs&#125;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function showWindowHref()&#123;</span><br><span class="line">    var sHref = window.location.href;</span><br><span class="line">    var args = sHref.split(&apos;?&apos;);</span><br><span class="line">    if(args[0] == sHref)&#123;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    var arr = args[1].split(&apos;&amp;&apos;);</span><br><span class="line">    var obj = &#123;&#125;;</span><br><span class="line">    for(var i = 0;i&lt; arr.length;i++)&#123;</span><br><span class="line">        var arg = arr[i].split(&apos;=&apos;);</span><br><span class="line">        obj[arg[0]] = arg[1];</span><br><span class="line">    &#125;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br><span class="line">var href = showWindowHref(); // obj</span><br><span class="line">console.log(href[&apos;name&apos;]); // xiaoming</span><br></pre></td></tr></table></figure>
+
+
+### 旋转
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-webkit-transform:rotate(666turn);transform:rotate(666turn);</span><br><span class="line">transition-delay:1s;</span><br><span class="line">transition-property:all;</span><br><span class="line">transition-duration:59s;</span><br><span class="line">transition-timing-function:cubic-bezier(.34,0,.84,1);</span><br></pre></td></tr></table></figure>
+
+
+### 返回之前的页面并且刷新
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.location.href = document.referrer;</span><br></pre></td></tr></table></figure>
+
+
+### 跳出iframe
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function () &#123;</span><br><span class="line">    if (top.location != this.location) &#123;</span><br><span class="line">        top.location = this.location;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+### 安卓嵌套H5交互
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-  window.&lt;对象名&gt;(&lt;数据&gt;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">栗子：</span><br><span class="line">&lt;p onClick=&quot;window.structure.add(0,&#123;&#123;$project_id&#125;&#125;)&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+
+### 苹果嵌套H5交互
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- window.webkit.messageHandlers.&lt;对象名&gt;.postMessage(&lt;数据&gt;)</span><br><span class="line">- &lt;数据是对象形式&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">栗子：</span><br><span class="line">&lt;p onClick=&quot;window.webkit.messageHandlers.add.postMessage(&#123;&apos;id&apos;:0,&apos;project_id&apos;:&#123;&#123;$project_id&#125;&#125;&#125;)&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+
+### 放大缩放 - html界面meta标签 
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;metaname=&quot;viewport&quot;content=&quot;height= [pixel_value| &quot;device-height&quot;] ,width= [pixel_value| &quot;device-width&quot;] ,initial-scale=float_value,//初始缩放minimum-scale=float_value,//最小maximum-scale=float_value,//最大user-scalable= [&quot;yes&quot; | &quot;no&quot;]//是否允许用户对页面缩放          &quot;/&gt;</span><br><span class="line"></span><br><span class="line">例如：&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=yes  initial-scale=1.0, maximum-scale=2.0&quot;&gt; 设定支持缩放，最大两倍缩放</span><br></pre></td></tr></table></figure>
+
+
+# 正则表达式
+-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">用户名：2-30个字符，支持中文、数字、字母、“_”、减号。</span><br><span class="line">/^([\u4e00-\u9fa5]|[0-9a-zA-Z_-])&#123;2,30&#125;$/</span><br><span class="line"></span><br><span class="line">密码：6-12位字母和数字组合</span><br><span class="line">/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]&#123;6,12&#125;$/;</span><br><span class="line"></span><br><span class="line">邮箱：</span><br><span class="line">/^\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]&#123;2,14&#125;$/;</span><br><span class="line"></span><br><span class="line">手机：</span><br><span class="line">/^1\d&#123;10&#125;$/;</span><br><span class="line"></span><br><span class="line">去除所有空格: </span><br><span class="line">str = str.replace(/\s*/g,&quot;&quot;);</span><br></pre></td></tr></table></figure>
+
+
+### swiper
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var swiper = new Swiper(&apos;.certificate-swiper .swiper-container&apos;, &#123;</span><br><span class="line">	autoplay:3500,</span><br><span class="line">	spend:2000,</span><br><span class="line">	loop:true,</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	//display:none 解决之后轮播效果失效的问题</span><br><span class="line">   	observer: true,</span><br><span class="line">   	observeParents: true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+# H5微场景
+- [企业秀](http://www.eqxiu.com/)
+- [mamk](http://maka.im/)
+
+# HTML
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">readonly 表示此域的值不可修改，仅可与 type=&quot;text&quot; 配合使用，可复制，可选择,可以接收焦点，后台会接收到传值. </span><br><span class="line">&lt;input type=&quot;text&quot; readonly=&quot;readonly&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+
+# css
+- [前端开发面试题](https://juejin.im/entry/5781b8db0a2b58005765e628)
+-
+
+### 解决页面使用overflow: scroll在iOS上滑动卡顿的问题
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-overflow-scrolling: touch;</span><br></pre></td></tr></table></figure>
+
+
+### 火狐浏览器 - 点击之后出现虚线边框
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">去掉Firefox下select选中时的虚线框</span><br><span class="line">select:-moz-focusring &#123;  </span><br><span class="line">    color: transparent;</span><br><span class="line">    text-shadow: 0 0 0 #000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a:focus &#123;</span><br><span class="line">  outline: 0 none</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### placeholder
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">input::-webkit-input-placeholder&#123;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">input::-moz-placeholder&#123;   /* Mozilla Firefox 19+ */</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">input:-moz-placeholder&#123;    /* Mozilla Firefox 4 to 18 */</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br><span class="line">input:-ms-input-placeholder&#123;  /* Internet Explorer 10-11 */ </span><br><span class="line">	color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">不兼容IE8以下</span><br><span class="line">图片定义，可以居中</span><br><span class="line">width: 100%;</span><br><span class="line">max-height: 100%;</span><br><span class="line">position: absolute;</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">-webkit-transform: translate(-50%,-50%);</span><br><span class="line">-moz-transform: translate(-50%,-50%);</span><br><span class="line">transform: translate(-50%,-50%);</span><br><span class="line"></span><br><span class="line">兼容IE8</span><br><span class="line">position: absolute;</span><br><span class="line">top: 0;</span><br><span class="line">right: 0;</span><br><span class="line">bottom: 0;</span><br><span class="line">left: 0;</span><br><span class="line">margin:0 auto;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">css3 列表排列</span><br><span class="line">display: flex;</span><br><span class="line">flex-wrap: wrap;</span><br><span class="line">justify-content: space-between;</span><br><span class="line">     </span><br><span class="line">显示省略号</span><br><span class="line">overflow: hidden;</span><br><span class="line">text-overflow:ellipsis;</span><br><span class="line">white-space: nowrap;</span><br><span class="line"></span><br><span class="line">强制不换行 </span><br><span class="line">p &#123; white-space:nowrap; &#125;</span><br><span class="line"></span><br><span class="line">多行文本溢出显示省略号</span><br><span class="line">height:50px;</span><br><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 3;</span><br><span class="line">overflow: hidden;</span><br><span class="line"></span><br><span class="line"># 不显示可能被过滤了 加上autoprefixer就OK了</span><br><span class="line">/* autoprefixer: off */</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">/* autoprefixer: on */</span><br><span class="line"># 不显示可能被过滤了  加上autoprefixer就OK了</span><br><span class="line"></span><br><span class="line">自动转行、换行</span><br><span class="line">word-wrap:break-word;</span><br><span class="line">word-break:normal;  //英文字母断点换行</span><br><span class="line"></span><br><span class="line">pre标签 - 自动换行</span><br><span class="line">white-space:pre-wrap;</span><br></pre></td></tr></table></figure>
+
+
+### css3 瀑布流层
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/*瀑布流层*/</span><br><span class="line">.waterfall&#123;</span><br><span class="line">	-moz-column-count:4; /* Firefox */</span><br><span class="line">	-webkit-column-count:4; /* Safari 和 Chrome */</span><br><span class="line">	column-count:4;		//个数</span><br><span class="line">	-moz-column-gap: 1em;</span><br><span class="line">	-webkit-column-gap: 1em;</span><br><span class="line">	column-gap: 1em;		//间距</span><br><span class="line">	</span><br><span class="line">	  -moz-column-rule: 2px dotted coral;   //右边虚线</span><br><span class="line">	  -webkit-column-rule: 2px dotted coral;</span><br><span class="line">	  column-rule: 2px dotted coral;</span><br><span class="line">&#125;</span><br><span class="line">/*一个内容层*/</span><br><span class="line">.item&#123;</span><br><span class="line">	padding: 1em;</span><br><span class="line">	margin: 0 0 1em 0;</span><br><span class="line">	-moz-page-break-inside: avoid;</span><br><span class="line">	-webkit-column-break-inside: avoid;</span><br><span class="line">	break-inside: avoid;</span><br><span class="line">	border: 1px solid #000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,</span><br><span class="line">* 可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 三角形的绘制</span><br><span class="line">#demo &#123;</span><br><span class="line">  width: 0;</span><br><span class="line">  height: 0;</span><br><span class="line">  border-width: 20px;</span><br><span class="line">  border-style: solid;</span><br><span class="line">  border-color: transparent transparent red transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CSS3不显示滚动条但是可以滚动</span><br><span class="line">::-webkit-scrollbar&#123;</span><br><span class="line">	width: 0px;height: 0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### 媒体查询
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">max-device-width是设备整个显示区域的宽度，例如，真实的设备屏幕宽度。</span><br><span class="line">@media (min-device-width: 321px) and (max-device-width: 375px) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">max-width是目标显示区域的宽度，例如，浏览器宽度。</span><br><span class="line">@media screen and (min-width:600px) and (max-width:900px)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### CSS3 greyscale CSS将图片转换成黑白(灰色、置灰)
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;mm1.jpg&quot; class=&quot;gray&quot; /&gt;</span><br><span class="line">.gray &#123; </span><br><span class="line">    -webkit-filter: grayscale(100%);</span><br><span class="line">    -moz-filter: grayscale(100%);</span><br><span class="line">    -ms-filter: grayscale(100%);</span><br><span class="line">    -o-filter: grayscale(100%);</span><br><span class="line">    </span><br><span class="line">    filter: grayscale(100%);</span><br><span class="line">	</span><br><span class="line">    filter: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.gradient&#123;</span><br><span class="line">    background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);</span><br><span class="line">    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#ffffff));</span><br><span class="line">    background: -webkit-linear-gradient(top, #000000 0%,#ffffff 100%);</span><br><span class="line">    background: -o-linear-gradient(top, #000000 0%,#ffffff 100%);</span><br><span class="line">    background: -ms-linear-gradient(top, #000000 0%,#ffffff 100%);</span><br><span class="line">    background: linear-gradient(to bottom, #000000 0%,#ffffff 100%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+- CSS3新增伪类有那些？
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> 举例：</span><br><span class="line">   p:first-of-type 选择属于其父元素的首个 </span><br><span class="line">元素的每个 </span><br><span class="line">	</span><br><span class="line">元素。</span><br><span class="line">   p:last-of-type  选择属于其父元素的最后 </span><br><span class="line">	</span><br><span class="line">元素的每个 </span><br><span class="line">	</span><br><span class="line">元素。</span><br><span class="line">   p:only-of-type  选择属于其父元素唯一的 </span><br><span class="line">	</span><br><span class="line">元素的每个 </span><br><span class="line">	</span><br><span class="line">元素。</span><br><span class="line">   p:only-child        选择属于其父元素的唯一子元素的每个 </span><br><span class="line">	</span><br><span class="line">元素。</span><br><span class="line">   p:nth-child(2)  选择属于其父元素的第二个子元素的每个 </span><br><span class="line">	</span><br><span class="line">元素。</span><br><span class="line">	</span><br><span class="line">   :after          在元素之前添加内容,也可以用来做清除浮动。</span><br><span class="line">   :before         在元素之后添加内容</span><br><span class="line">   :enabled        </span><br><span class="line">   :disabled       控制表单控件的禁用状态。</span><br><span class="line">   :checked        单选框或复选框被选中。</span><br></pre></td></tr></table></figure>
+
+
+- 初始化CSS样式
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">淘宝的样式初始化代码：</span><br><span class="line">body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td &#123; margin:0; padding:0; &#125;</span><br><span class="line">body, button, input, select, textarea &#123; font:12px/1.5tahoma, arial, \5b8b\4f53; &#125;</span><br><span class="line">h1, h2, h3, h4, h5, h6&#123; font-size:100%; &#125;</span><br><span class="line">address, cite, dfn, em, var &#123; font-style:normal; &#125;</span><br><span class="line">code, kbd, pre, samp &#123; font-family:couriernew, courier, monospace; &#125;</span><br><span class="line">small&#123; font-size:12px; &#125;</span><br><span class="line">ul, ol &#123; list-style:none; &#125;</span><br><span class="line">a &#123; text-decoration:none; &#125;</span><br><span class="line">a:hover &#123; text-decoration:underline; &#125;</span><br><span class="line">sup &#123; vertical-align:text-top; &#125;</span><br><span class="line">sub&#123; vertical-align:text-bottom; &#125;</span><br><span class="line">legend &#123; color:#000; &#125;</span><br><span class="line">fieldset, img &#123; border:0; &#125;</span><br><span class="line">button, input, select, textarea &#123; font-size:100%; &#125;</span><br><span class="line">table &#123; border-collapse:collapse; border-spacing:0; &#125;</span><br></pre></td></tr></table></figure>
+
+
+- 清除浮动
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after &#123;content:&quot;\200B&quot;; display:block; height:0; clear:both; &#125; </span><br><span class="line">.clearfix &#123; *zoom:1; &#125;.  //是在处理兼容性问题</span><br></pre></td></tr></table></figure>
+
+
+- 去掉chrome记住密码后自动填充表单的黄色背景
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">情景一：input文本框是纯色背景的</span><br><span class="line">可以对input:-webkit-autofill使用足够大的纯色内阴影来覆盖input输入框的黄色背景；如：</span><br><span class="line">input:-webkit-autofill &#123;</span><br><span class="line">-webkit-box-shadow: 0 0 0 1000px white inset;</span><br><span class="line">border: 1px solid #CCC!important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果你有使用圆角等属性，或者发现输入框的长度高度不太对，可以对其进行调整，除了chrome默认定义的background-color，background-image，color不能用!important提升其优先级以外，其他的属性均可使用!important提升其优先级，如：</span><br><span class="line">input:-webkit-autofill &#123;</span><br><span class="line">	-webkit-box-shadow: 0 0 0px 1000px white inset;</span><br><span class="line">	</span><br><span class="line">	border: 1px solid #CCC!important;</span><br><span class="line">	height: 27px!important;</span><br><span class="line">	line-height: 27px!important;</span><br><span class="line">	border-radius: 0 4px 4px 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">情景二：input文本框是使用图片背景的</span><br><span class="line">1、如果你的图片背景不太复杂，只有一些简单的内阴影，那个人觉得完全可以使用上面介绍的方法用足够大的纯色内阴影去覆盖掉黄色背景，此时只不过是没有了原来的内阴影效果罢了。</span><br><span class="line"></span><br><span class="line">2、如果你实在想留住原来的内阴影效果，那就只能牺牲chrome自动填充表单的功能，使用js去实现，例如：</span><br><span class="line"></span><br><span class="line">$(function() &#123;</span><br><span class="line">if (navigator.userAgent.toLowerCase().indexOf(&quot;chrome&quot;) &gt;= 0) &#123;</span><br><span class="line">	$(window).load(function()&#123;</span><br><span class="line">		$(&apos;ul input:not(input[type=submit])&apos;).each(function()&#123;</span><br><span class="line">			var outHtml = this.outerHTML;</span><br><span class="line">			$(this).append(outHtml);</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">去掉button（按钮）点击之后的边框</span><br><span class="line">&#123;</span><br><span class="line"> outline:0 none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+- ::before 和 :after中双冒号和单冒号 有什么区别？解释一下这2个伪元素的作用
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">伪元素由双冒号和伪元素名称组成.对于CSS2之前已有的伪元素，</span><br><span class="line">不过浏览器需要同时支持旧的已经存在的伪元素写法，比如:first-line、:first-letter、:before、:after等，而新的在CSS3中引入的伪元素则不允许再支持旧的单冒号的写法。</span><br><span class="line">比如:before，单冒号和双冒号的写法::before作用是一样的。</span><br></pre></td></tr></table></figure>
+
+
+- 怎么让Chrome支持小于12px 的文字？
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body,p&#123; margin:0; padding:0&#125; p&#123;font-size:10px;&#125; span&#123;-webkit-transform:scale(0.8); display:inline-block&#125;</span><br></pre></td></tr></table></figure>
+
+
+- 让页面里的字体变清晰，变细用CSS怎么做？（-webkit-font-smoothing: antialiased;）
+
+- font-style属性可以让它赋值为“oblique” oblique是什么意思？
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">…让一种字体标识为斜体(oblique)，如果没有这种格式，就使用italic字体。”</span><br></pre></td></tr></table></figure>
+
+
+### steps()逐帧动画
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;west-03&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">.west-03 &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    width: 170px;</span><br><span class="line">    height: 240px;</span><br><span class="line">    left: 50%;</span><br><span class="line">    margin-left: -11px;</span><br><span class="line">    top: 326px;</span><br><span class="line">    background-image: url(https://xyq.res.netease.com/pc/gw/20170118103441/img/west_03_f962447.png);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    -webkit-animation: play03 1.4s steps(8) infinite;</span><br><span class="line">    -moz-animation: play03 1.4s steps(8) infinite;</span><br><span class="line">    -ms-animation: play03 1.4s steps(8) infinite;</span><br><span class="line">    animation: play03 1.4s steps(8) infinite</span><br><span class="line">&#125;</span><br><span class="line">@-webkit-keyframes play03 &#123;</span><br><span class="line">    0% &#123;</span><br><span class="line">        background-position: 0 0</span><br><span class="line">    &#125;</span><br><span class="line">    100% &#123;</span><br><span class="line">        background-position: -1360px 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+# VUE
+
+### 初始化项目
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
+
+
+### 编译程序
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+
+- webpack打包
+- npm run build
+- 先用vue编的.再cordova打包
+
+M 代表 Plain Javascript Objects 简单的 js 对象
+
+V 代表 DOM 显示
+
+VM 代表 Vue 框架中的数据绑定和对象监听封装操作
+
+框架的主要作用是实现 ViewModel ， 搭建起了 M 与 V 之间的桥梁
+
+### prop 和 ref区别
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prop 着重于数据的传递，它并不能调用子组件里的属性和方法。像创建文章组件时，自定义标题和内容这样的使用场景，最适合使用prop。</span><br><span class="line">ref 着重于索引，主要用来调用子组件里的属性和方法，其实并不擅长数据传递。而且ref用在dom元素的时候，能使到选择器的作用，这个功能比作为索引更常有用到。</span><br></pre></td></tr></table></figure>
+
+
+### 导出Excel
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> handleDownload() &#123;</span><br><span class="line">    let list = &apos;&apos;;</span><br><span class="line">    if (this.sels.length) &#123;</span><br><span class="line">        list = this.sels;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        list = this.maintains;</span><br><span class="line">    &#125;</span><br><span class="line">    this.downloadLoading = true;</span><br><span class="line">    import(&apos;@/vendor/Export2Excel&apos;).then(excel =&gt; &#123;</span><br><span class="line">        const tHeader = [&apos;Id&apos;, &apos;Title&apos;, &apos;Content&apos;, &apos;Time&apos;];</span><br><span class="line">        const filterVal = [&apos;strMaintainId&apos;, &apos;strTitle&apos;, &apos;strContent&apos;, &apos;createTime&apos;];</span><br><span class="line">        const data = this.formatJson(filterVal, list);</span><br><span class="line">        excel.export_json_to_excel(&#123;</span><br><span class="line">            titleName: &apos;维护项列表&apos;,</span><br><span class="line">            header: tHeader,</span><br><span class="line">            data,</span><br><span class="line">            filename: this.filename,</span><br><span class="line">            autoWidth: this.autoWidth</span><br><span class="line">        &#125;);</span><br><span class="line">        this.downloadLoading = false;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+### 搜索功能
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">searchList: function () &#123;</span><br><span class="line">  // 逻辑--&gt;根据input的value值筛选categoryList中的数据</span><br><span class="line">  let searchArr = [];// 声明一个空数组来存放数据</span><br><span class="line">  for (let i = 0; i &lt; this.categoryList.length; i++) &#123;</span><br><span class="line">    // for循环数据中的每一项（根据name值）</span><br><span class="line">    if (this.categoryList[i].searchName.search(this.searchVal) !== -1) &#123;</span><br><span class="line">      // 向空数组中添加数据</span><br><span class="line">      searchArr.push(this.categoryList[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return searchArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;span v-html=&quot;brightenKeyword(item.searchName, searchVal)&quot;&gt;&lt;/span&gt;</span><br><span class="line"> // 筛选变色</span><br><span class="line">brightenKeyword (val, keyword) &#123;</span><br><span class="line">  const Reg = new RegExp(keyword, &apos;i&apos;);</span><br><span class="line">  if (val) &#123;</span><br><span class="line">    return val.replace(Reg, `&lt;em class=&quot;searchHighlight&quot;&gt;$&#123;keyword&#125;&lt;/em&gt;`);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### 已选：充电|放电|内阻
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  &lt;el-form-item label=&quot;类型选择&quot;&gt;</span><br><span class="line">    &lt;el-checkbox-group v-model=&quot;form.type&quot;&gt;</span><br><span class="line">        &lt;el-checkbox label=&quot;充电&quot; name=&quot;type&quot;&gt;&lt;/el-checkbox&gt;</span><br><span class="line">        &lt;el-checkbox label=&quot;放电&quot; name=&quot;type&quot;&gt;&lt;/el-checkbox&gt;</span><br><span class="line">        &lt;el-checkbox label=&quot;内阻&quot; name=&quot;type&quot;&gt;&lt;/el-checkbox&gt;</span><br><span class="line">    &lt;/el-checkbox-group&gt;</span><br><span class="line">    &lt;p&gt;已选：&#123;&#123;form.type.join(&apos;|&apos;)&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;/el-form-item&gt;</span><br></pre></td></tr></table></figure>
+
+
+### 阻止回车刷新，添加回车搜索事件
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-form</span><br><span class="line">	ref=&quot;searchForm&quot;</span><br><span class="line">	:model=&quot;searchForm&quot;</span><br><span class="line">	label-width=&quot;100px&quot;</span><br><span class="line">	</span><br><span class="line">	@submit.native.prevent</span><br><span class="line">&gt;</span><br><span class="line"></span><br><span class="line">&lt;el-button</span><br><span class="line">	type=&quot;primary&quot;</span><br><span class="line">	@click=&quot;submitForm(&apos;searchForm&apos;)&quot;</span><br><span class="line">	</span><br><span class="line">	native-type=&quot;submit&quot;</span><br><span class="line">	</span><br><span class="line">&gt;搜索&lt;/el-button&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> /***滑动限制***/</span><br><span class="line">stop()&#123;</span><br><span class="line">var mo=function(e)&#123;e.preventDefault();&#125;;</span><br><span class="line">document.body.style.overflow=&apos;hidden&apos;;</span><br><span class="line">document.addEventListener(&quot;touchmove&quot;,mo,false);//禁止页面滑动</span><br><span class="line">&#125;,</span><br><span class="line">/***取消滑动限制***/</span><br><span class="line">move()&#123;</span><br><span class="line">var mo=function(e)&#123;e.preventDefault();&#125;;</span><br><span class="line">document.body.style.overflow=&apos;&apos;;//出现滚动条</span><br><span class="line">document.removeEventListener(&quot;touchmove&quot;,mo,false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### 默认选中之前选中的值
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> props: &#123;</span><br><span class="line">    categories: &#123;</span><br><span class="line">        type: Array,</span><br><span class="line">        required: true</span><br><span class="line">    &#125;,</span><br><span class="line">    category_ids: &#123;</span><br><span class="line">        type: Array</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">&apos;categories&apos;: function (n, o) &#123;</span><br><span class="line">   if (this.category_ids &amp;&amp; this.category_ids.length) &#123;</span><br><span class="line">       for (var i = 0; i &lt; this.categories.length; i++) &#123;</span><br><span class="line">           if (this.categories[i].nodes) &#123;</span><br><span class="line">               for (var j = 0; j &lt; this.categories[i].nodes.length; j++) &#123;</span><br><span class="line">                   if (this.categories[i].nodes[j].nodes) &#123;</span><br><span class="line">                       for (var k = 0; k &lt; this.categories[i].nodes[j].nodes.length; k++) &#123;</span><br><span class="line">                           for (var ii = 0; ii &lt; this.category_ids.length; ii++) &#123;</span><br><span class="line">                               if (this.categories[i].nodes[j].nodes[k].id == this.category_ids[ii]) &#123;</span><br><span class="line">                                   this.selectCheck.push(this.categories[i].nodes[j].nodes[k]);</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+### 数组添加&amp;删除
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if (event.currentTarget.firstElementChild.className.indexOf(&apos;category_checkbox_checked&apos;) == -1) &#123;</span><br><span class="line">                    if (this.selectCheck.length &lt; 10) &#123;</span><br><span class="line">                        event.currentTarget.firstElementChild.className = &quot;category-checkbox category_checkbox_checked&quot;; //切换按钮样式</span><br><span class="line">                        this.selectCheck.push(item);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        alert(&apos;品类最多只能选择10个！&apos;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    event.currentTarget.firstElementChild.className = &quot;category-checkbox&quot;;//切换按钮样式</span><br><span class="line">                    for (var i = 0; i &lt; this.selectCheck.length; i++) &#123;</span><br><span class="line">                        if (this.selectCheck[i].id == item.id) &#123;</span><br><span class="line">                            var index = this.selectCheck.indexOf(item);</span><br><span class="line">                            if (index &gt; -1) &#123;</span><br><span class="line">                                this.selectCheck.splice(index, 1);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+
+### 组件输出事件
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&apos;user-behavior&apos;, type, this.selectCheck);</span><br></pre></td></tr></table></figure>
+
+
+### 添加字段
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this.$set(this.level3[index], &apos;selectCheck&apos;, true);</span><br><span class="line">this.level3 = Object.assign(&#123;&#125;,this.level3);</span><br></pre></td></tr></table></figure>
+
+
+### 下载资料
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function download(url) &#123;</span><br><span class="line">    var iframe = document.createElement(&quot;iframe&quot;);</span><br><span class="line">    iframe.style.display = &quot;none&quot;;</span><br><span class="line">    iframe.src = url;</span><br><span class="line">    document.body.appendChild(iframe);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### 新页面打开
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vue:</span><br><span class="line">let href = this.$router.resolve(&#123;</span><br><span class="line">	path: `/material/material/edit/$&#123;id&#125;`</span><br><span class="line">&#125;);</span><br><span class="line">window.open(href.href, &apos;_blank&apos;);</span><br><span class="line">  </span><br><span class="line">js:</span><br><span class="line">var tempwindow = window.open();</span><br><span class="line">tempwindow.location = &apos;/url/&apos;;</span><br></pre></td></tr></table></figure>
+
+
+### vue elementUI el-select 同时获取label 和 value 的值
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj = this.providers.find(function (item) &#123;</span><br><span class="line">	return item.id === event;</span><br><span class="line">&#125;);</span><br><span class="line">// obj 就是被选中的那个对象，</span><br><span class="line">this.ruleForm.company_name = obj.company_name;</span><br></pre></td></tr></table></figure>
+
+
+### 创建一个基于 webpack 模板的新项目
+
+# bootstrap-sass
+
+- 修改24栅格
+- $grid-columns:              24 !default;
+
+
+#JavaScript
+-
+
+### js搜索功能
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function searchList(data, searchVal) &#123;</span><br><span class="line">    //逻辑--&gt;根据input的value值筛选data中的数据</span><br><span class="line">    var searchArr = [];//声明一个空数组来存放数据</span><br><span class="line">    for (var i = 0; i &lt; data.length; i++) &#123;</span><br><span class="line">        //for循环数据中的每一项（根据name值）</span><br><span class="line">        if (data[i].developer_group_name.search(searchVal) !== -1) &#123;</span><br><span class="line">            //向空数组中添加数据</span><br><span class="line">            searchArr.push(data[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return searchArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+# 循环模板文件
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var $ids = $.params.ids;</span><br><span class="line">var tpl = temp(&apos;partnerTpl&apos;, &#123;</span><br><span class="line">    &apos;ids&apos;: $ids</span><br><span class="line">&#125;);</span><br><span class="line">$(&apos;.ids_attributes&apos;).html(&apos;&apos;).append(tpl);</span><br><span class="line">    </span><br><span class="line">&lt;script type=&quot;text/html&quot; id=&quot;partnerTpl&quot;&gt;</span><br><span class="line">	&lt;% for(var i=0; i&lt; ids.length; i++) &#123; %&gt;</span><br><span class="line">	  &lt;input type=&quot;hidden&quot; name=&quot;partner_user_ids[]&quot; value=&quot;&lt;%=ids[i]%&gt;&quot;/&gt;</span><br><span class="line">	&lt;% &#125; %&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+# 循环对象
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var man =&#123;hands:2,legs:2,heads:1&#125;;</span><br><span class="line">for(var i in man)&#123;</span><br><span class="line">     console.log(i,&quot;:&quot;,man[i]);</span><br><span class="line">&#125;</span><br><span class="line">//输出结果为</span><br><span class="line">hands : 2</span><br><span class="line">legs : 2</span><br><span class="line">heads : 1</span><br></pre></td></tr></table></figure>
+
+
+# 循环字符串
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var string = [&apos;1&apos;,&apos;2&apos;];</span><br><span class="line">var array = [];</span><br><span class="line">array = string.split(&apos;,&apos;);</span><br><span class="line">for (var i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">    console.log(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">窗口弹框(&apos;提示信息&apos;,值);</span><br><span class="line">window.prompt(&quot;Copy to clipboard: Ctrl+C, Enter&quot;, data.id);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CommonJS，AMD，CMD区别</span><br><span class="line"></span><br><span class="line">CommonJS</span><br><span class="line">CommonJs 是服务器端模块的规范，Node.js采用了这个规范。 </span><br><span class="line"></span><br><span class="line">根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。</span><br><span class="line"></span><br><span class="line">AMD((Asynchromous Module Definition) </span><br><span class="line"></span><br><span class="line">AMD 是 RequireJS 在推广过程中对模块定义的规范化产出 </span><br><span class="line"></span><br><span class="line">AMD异步加载模块。它的模块支持对象 函数 构造器 字符串 JSON等各种类型的模块。 </span><br><span class="line"></span><br><span class="line">CMD </span><br><span class="line"></span><br><span class="line">CMD是SeaJS 在推广过程中对模块定义的规范化产出 </span><br><span class="line"></span><br><span class="line">CMD和AMD的区别有以下几点： </span><br><span class="line"></span><br><span class="line">1.对于依赖的模块AMD是提前执行，CMD是延迟执行。不过RequireJS从2.0开始，也改成可以延迟执行（根据写法不同，处理方式不通过）。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">JSON.parse</span><br><span class="line">parse用于从一个字符串中解析出json对象,如</span><br><span class="line">var str = &apos;&#123;&quot;name&quot;:&quot;huangxiaojian&quot;,&quot;age&quot;:&quot;23&quot;&#125;&apos;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line"></span><br><span class="line">JSON.parse(str)</span><br><span class="line"></span><br><span class="line">Object</span><br><span class="line"></span><br><span class="line">age: &quot;23&quot;</span><br><span class="line">name: &quot;huangxiaojian&quot;</span><br><span class="line">__proto__: Object</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">window.open 弹框显示</span><br><span class="line"></span><br><span class="line"> $(&apos;.look-btn&apos;).click(function () &#123;</span><br><span class="line">            var innerWidth = window.innerWidth / 2 - 200;</span><br><span class="line">            var innerHeight = window.innerHeight / 2 - 300;</span><br><span class="line"></span><br><span class="line">            window.open(&apos;/document/article/detail/&apos; + params.id, &apos;&apos;, &apos;width=400,height=600,top=&apos; + innerHeight + &apos;,left=&apos; + innerWidth);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filter() 过滤函数</span><br><span class="line"></span><br><span class="line">$(&apos;li&apos;).filter(&apos;:even&apos;).css(&apos;background-color&apos;, &apos;red&apos;);</span><br><span class="line">将项目 1, 3, 5 的背景设置为红色</span><br></pre></td></tr></table></figure>
+
+
+下标0开始
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">slice() 把匹配元素集合缩减为指定的指数范围的子集。</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;list item 1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;list item 2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;list item 3&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;list item 4&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;list item 5&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(&apos;li&apos;).slice(-1).css(&apos;background-color&apos;, &apos;red&apos;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># toFixed</span><br><span class="line">四舍五入取两位小数点</span><br><span class="line">var loaded = e.delegatedEvent[&apos;loaded&apos;];</span><br><span class="line">var total = e.delegatedEvent[&apos;total&apos;];</span><br><span class="line"></span><br><span class="line">$(&apos;.progress-bar&apos;).html((Number(loaded / total * 100)).toFixed(2) + &apos;%&apos;);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">substr() 方法可在字符串中抽取从 start 下标开始的指定数目的字符。</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">var str=&quot;Hello world!&quot;</span><br><span class="line">document.write(str.substr(3,7))</span><br><span class="line"></span><br><span class="line">&lt;/script&gt; </span><br><span class="line"></span><br><span class="line">lo worl</span><br></pre></td></tr></table></figure>
+
+
+split() 方法用于把一个字符串分割成字符串数组。
+document.write(str.split(&quot; &quot;,3))
+
+reverse() 方法用于颠倒数组中元素的顺序。
+
+join() 方法用于把数组中的所有元素放入一个字符串。   
+document.write(arr.join())    `George,John,Thomas
+
+-----------------------------------------
+
+数组的操作
+
+### JS多维数组去重（对象键名比较法 + indexof）
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function uniquarre2(array)&#123;</span><br><span class="line">	var arr = []; </span><br><span class="line">	for(var i = 0; i &lt; array.length; i++)&#123;			</span><br><span class="line">		if(arr.indexOf(array[i]) == -1)&#123;</span><br><span class="line">			arr.push(array[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### 查找数组中是否有重复
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//对数组进行排序，查上一个和下一个是否相等</span><br><span class="line">var ary = new Array(&quot;111&quot;,&quot;22&quot;,&quot;33&quot;,&quot;111&quot;);</span><br><span class="line">var nary=ary.sort();</span><br><span class="line">for(var i=0;i&lt;ary.length;i++)&#123;</span><br><span class="line">   if (nary[i]==nary[i+1])&#123;</span><br><span class="line">   alert(&quot;数组重复内容：&quot;+nary[i]);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### concat() 数组合并
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">var arr = new Array(3)</span><br><span class="line">arr[0] = &quot;George&quot;</span><br><span class="line">arr[1] = &quot;John&quot;</span><br><span class="line">arr[2] = &quot;Thomas&quot;</span><br><span class="line"></span><br><span class="line">var arr2 = new Array(3)</span><br><span class="line">arr2[0] = &quot;James&quot;</span><br><span class="line">arr2[1] = &quot;Adrew&quot;</span><br><span class="line">arr2[2] = &quot;Martin&quot;</span><br><span class="line"></span><br><span class="line">document.write(arr.concat(arr2))</span><br><span class="line">输出值：George,John,Thomas,James,Adrew,Martin</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+### sort() 数组排序
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">function sortNumber(a, b)</span><br><span class="line">&#123;</span><br><span class="line">return a - b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var arr = new Array(6)</span><br><span class="line">arr[0] = &quot;10&quot;</span><br><span class="line">arr[1] = &quot;5&quot;</span><br><span class="line">arr[2] = &quot;40&quot;</span><br><span class="line">arr[3] = &quot;25&quot;</span><br><span class="line">arr[4] = &quot;1000&quot;</span><br><span class="line">arr[5] = &quot;1&quot;</span><br><span class="line"></span><br><span class="line">document.write(arr + &quot;&lt;br /&gt;&quot;)</span><br><span class="line">document.write(arr.sort(sortNumber))</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">输出值：1,5,10,25,40,1000</span><br></pre></td></tr></table></figure>
+
+
+### Math（算数）对象
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">round() 对一个数进行四舍五入。</span><br><span class="line">document.write(Math.round(4.7))   `5</span><br><span class="line"></span><br><span class="line">Math 对象的 random() 方法来返回一个介于 0 和 1 之间的随机数：</span><br><span class="line">document.write(Math.random())		`0.9370844220218102</span><br><span class="line"></span><br><span class="line">Math 对象的 floor() 方法和 random() 来返回一个介于 0 和 10 之间的随机数：</span><br><span class="line">document.write(Math.floor(Math.random()*(10-0)+1)+0)   `3</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">1. 从1开始 至 任意值parseInt(Math.random()*上限+1);</span><br><span class="line">2. 从任意值开始 至 任意值parseInt(Math.random()*(上限-下限+1)+下限);</span><br></pre></td></tr></table></figure>
+
+
+### 插件
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">无参的格式为：</span><br><span class="line">(function($)&#123;</span><br><span class="line">     $.fn.extend(&#123;</span><br><span class="line">         myPlugName:function()&#123;&lt;!--myPlugName你的插件的名字，根据自己的情况来命名--&gt;</span><br><span class="line">             //dosomethings</span><br><span class="line">         &#125;);    </span><br><span class="line">     &#125;</span><br><span class="line">     &#125;);    </span><br><span class="line">&#125;)(jQuery);</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">(function($)&#123;</span><br><span class="line">    $.fn.extend(&#123;</span><br><span class="line">        myPlugName:function()&#123;</span><br><span class="line">            $(this).click(function()&#123;</span><br><span class="line">                alert($(this).val());    </span><br><span class="line">            &#125;);    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);    </span><br><span class="line">&#125;)(jQuery);</span><br><span class="line">&lt;/script&gt;       </span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;input type=&quot;button&quot; value=&quot;点击我&quot; id=&quot;btn&quot; /&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">      $(&quot;#btn&quot;).myPlugName();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">带参数的jquery插件</span><br><span class="line">(function($)&#123;</span><br><span class="line">    $.fn.hilight=function(options)&#123;</span><br><span class="line">        var defaults=&#123;</span><br><span class="line">            foreground:&apos;red&apos;,</span><br><span class="line">            background:&apos;yellow&apos;    </span><br><span class="line">        &#125;;</span><br><span class="line">        var opts = $.extend(defaults,options);</span><br><span class="line">        //dosomethings</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    (function($)&#123;</span><br><span class="line">        $.fn.hilight=function(options)&#123;</span><br><span class="line">            var defaults=&#123;</span><br><span class="line">                foreground:&apos;red&apos;,</span><br><span class="line">                background:&apos;yellow&apos;    </span><br><span class="line">            &#125;;</span><br><span class="line">            var opts = $.extend(defaults,options);</span><br><span class="line">            $(this).css(&quot;background-color&quot;,opts.background);</span><br><span class="line">            $(this).css(&quot;color&quot;,opts.foreground);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)(jQuery);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;myDiv&quot;&gt;This is a Params JQuery!&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    $(&quot;#myDiv&quot;).hilight(&#123;foreground:&apos;blue&apos;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+# 阻止右边框内的事件流
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;.feedback_box&apos;).click(function (event) &#123;</span><br><span class="line">    var event = event || window.event;</span><br><span class="line">    event.stopPropagation();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+# 对设置或移除被选元素的一个或多个类进行切换。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">单个属性切换</span><br><span class="line">$(&quot;.more-info&quot;).click(function (event) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    $(this).toggleClass(&quot;active&quot;).siblings().removeClass(&apos;active&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(&quot;.supplice a&quot;).click(function (event) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    $(this).addClass(&quot;active&quot;).siblings().removeClass(&apos;active&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">媒体查询</span><br><span class="line">max-device-width是设备整个显示区域的宽度，例如，真实的设备屏幕宽度。</span><br><span class="line">@media (min-device-width: 321px) and (max-device-width: 375px) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">max-width是目标显示区域的宽度，例如，浏览器宽度。</span><br><span class="line">@media screen and (min-width:600px) and (max-width:900px)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">只能输入数字，用正则判断</span><br><span class="line">$(document).on(&apos;keyup&apos;, &apos;input[name=&quot;provider_project_products[num][]&quot;]&apos;, function () &#123;</span><br><span class="line">	var pattern = /\D/g;</span><br><span class="line">	var str = $(this).val();</span><br><span class="line">	var date = str.replace(pattern, &apos;&apos;);</span><br><span class="line">	$(this).val(date);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+# 手机触摸判断方向
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">var startX, startY, moveEndX, moveEndY, X, Y;</span><br><span class="line"></span><br><span class="line">$(&quot;body&quot;).on(&quot;touchstart&quot;, function (e) &#123;</span><br><span class="line">    // 判断默认行为是否可以被禁用</span><br><span class="line">    if (e.cancelable) &#123;</span><br><span class="line">        // 判断默认行为是否已经被禁用</span><br><span class="line">        if (!e.defaultPrevented) &#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    startX = e.touches[0].pageX;</span><br><span class="line">    startY = e.touches[0].pageY;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line">$(&quot;body&quot;).on(&quot;touchend&quot;, function (e) &#123;</span><br><span class="line">    // 判断默认行为是否可以被禁用</span><br><span class="line">    if (e.cancelable) &#123;</span><br><span class="line">        // 判断默认行为是否已经被禁用</span><br><span class="line">        if (!e.defaultPrevented) &#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    moveEndX = e.changedTouches[0].pageX;</span><br><span class="line">    moveEndY = e.changedTouches[0].pageY;</span><br><span class="line">        X = moveEndX - startX,</span><br><span class="line">        Y = moveEndY - startY;</span><br><span class="line">    //左滑</span><br><span class="line">    if (X &gt; 0) &#123;</span><br><span class="line">        alert(&apos;右滑&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    //右滑</span><br><span class="line">    else if (X &lt; 0) &#123;</span><br><span class="line">         alert(&apos;左滑&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    //下滑</span><br><span class="line">    else if (Y &gt; 0) &#123;</span><br><span class="line">         alert(&apos;下滑&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    //上滑</span><br><span class="line">    else if (Y &lt; 0) &#123;</span><br><span class="line">         alert(&apos;上滑&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    //单击</span><br><span class="line">    else &#123;</span><br><span class="line">         alert(&apos;单击&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+### jquery $(window).height()取值等于$(document).height()的问题
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;&lt;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+### 字符串转换成JSON的三种方式
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1，eval方式解析，恐怕这是最早的解析方式了。</span><br><span class="line">function strToJson(str)&#123;</span><br><span class="line">     var json = eval(&apos;(&apos; + str + &apos;)&apos;);</span><br><span class="line">     return json;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2，new Function形式，比较怪异哦。</span><br><span class="line">function strToJson(str)&#123;</span><br><span class="line">    var json = (new Function(&quot;return &quot; + str))();</span><br><span class="line">    return json;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3，使用全局的JSON对象。</span><br><span class="line">function strToJson(str)&#123;</span><br><span class="line">    return JSON.parse(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">使用JSON.parse需严格遵守JSON规范，如属性都需用引号引起来，如下</span><br><span class="line">var str = &apos;&#123;name:&quot;jack&quot;&#125;&apos;;</span><br><span class="line">var obj = JSON.parse(str); // --&gt; parse error</span><br><span class="line">name没有用引号引起来，使用JSON.parse所有浏览器中均抛异常，解析失败。而前两种方式则没问题。</span><br></pre></td></tr></table></figure>
+
+
+### 面向对象
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> var myClick = function () &#123;</span><br><span class="line">    this.run = function (dom) &#123;</span><br><span class="line">        $(dom).click(function () &#123;</span><br><span class="line">            console.log(dom);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var obj = new myClick();</span><br><span class="line">obj.run(&apos;.top-title&apos;);</span><br></pre></td></tr></table></figure>
+
+
+### 问关于删除对象中一组数据的问题？（ delete 函数 ）
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&apos;a&apos;:&apos;b&apos;,&apos;c&apos;:&apos;d&apos;&#125;;</span><br><span class="line">var arr = [&apos;a&apos;];</span><br><span class="line">for (var i in obj) &#123;</span><br><span class="line">    for (var k=0;k&lt;arr.length;k++) &#123;</span><br><span class="line">        if (i != arr[k]) &#123;</span><br><span class="line">            delete obj[i];</span><br><span class="line">            console.log(obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### 删除指定的元素 (indexOf  如果没有返回-1，如果有会返回对应的位置)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (currentHatId.indexOf(id) == -1) &#123;</span><br><span class="line">  currentHatId.push(id);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  var key = currentHatId.indexOf(id);</span><br><span class="line">  currentHatId.splice(key, 1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line">ary.splice($.inArray(2, ary), 1); 其中$.inArray(2, ary)用来查找某元素在数组中的索引位置。</span><br></pre></td></tr></table></figure>
+
+
+### 根据打开的是电脑浏览器还是手机浏览器，跳转不同网站
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if ((navigator.userAgent.match(/(iPhone|iPad|Android|Windows Phone|baidu Transcoder|BlackBerry)/i))) &#123;</span><br><span class="line">    var sToMatch = String(window.document.location.href);</span><br><span class="line">    var reEs = /http(.*?):\/\/(.*?).fangquan.com\/(.*)/;</span><br><span class="line"></span><br><span class="line">    var wapDomain;</span><br><span class="line">    if (reEs.test(sToMatch)) &#123;</span><br><span class="line">        wapDomain = sToMatch.match(reEs)[3];</span><br><span class="line">        if (wapDomain == &quot;&quot;)</span><br><span class="line">            wapDomain = sToMatch.match(reEs)[1];</span><br><span class="line">    &#125;</span><br><span class="line">    if (wapDomain != &quot;&quot;)</span><br><span class="line">        location.replace(&quot;//wap.fq960.com/&quot; + wapDomain);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+### Nginx判断打开的是电脑浏览器还是手机浏览器，跳转不同网站
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ($http_user_agent !~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) &#123;</span><br><span class="line">         rewrite ^/(.*)$ http://www.qyfw24.com/$1 permanent;    #进行正常访问的时候判断user_agent为手机，则重写至此页面</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+
+### pc浏览器的判断
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">(function($, window, document,undefined)&#123;</span><br><span class="line">  if(!window.browser)&#123;</span><br><span class="line">      </span><br><span class="line">    var userAgent = navigator.userAgent.toLowerCase(),uaMatch;</span><br><span class="line">    window.browser = &#123;&#125;</span><br><span class="line">      </span><br><span class="line">    /**</span><br><span class="line">     * 判断是否为ie</span><br><span class="line">     */</span><br><span class="line">    function isIE()&#123;</span><br><span class="line">      return (&quot;ActiveXObject&quot; in window);</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 判断是否为谷歌浏览器</span><br><span class="line">     */</span><br><span class="line">    if(!uaMatch)&#123;</span><br><span class="line">      uaMatch = userAgent.match(/chrome\/([\d.]+)/);</span><br><span class="line">      if(uaMatch!=null)&#123;</span><br><span class="line">        window.browser[&apos;name&apos;] = &apos;chrome&apos;;</span><br><span class="line">        window.browser[&apos;version&apos;] = uaMatch[1];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 判断是否为火狐浏览器</span><br><span class="line">     */</span><br><span class="line">    if(!uaMatch)&#123;</span><br><span class="line">      uaMatch = userAgent.match(/firefox\/([\d.]+)/);</span><br><span class="line">      if(uaMatch!=null)&#123;</span><br><span class="line">        window.browser[&apos;name&apos;] = &apos;firefox&apos;;</span><br><span class="line">        window.browser[&apos;version&apos;] = uaMatch[1];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 判断是否为opera浏览器</span><br><span class="line">     */</span><br><span class="line">    if(!uaMatch)&#123;</span><br><span class="line">      uaMatch = userAgent.match(/opera.([\d.]+)/);</span><br><span class="line">      if(uaMatch!=null)&#123;</span><br><span class="line">        window.browser[&apos;name&apos;] = &apos;opera&apos;;</span><br><span class="line">        window.browser[&apos;version&apos;] = uaMatch[1];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 判断是否为Safari浏览器</span><br><span class="line">     */</span><br><span class="line">    if(!uaMatch)&#123;</span><br><span class="line">      uaMatch = userAgent.match(/safari\/([\d.]+)/);</span><br><span class="line">      if(uaMatch!=null)&#123;</span><br><span class="line">        window.browser[&apos;name&apos;] = &apos;safari&apos;;</span><br><span class="line">        window.browser[&apos;version&apos;] = uaMatch[1];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 最后判断是否为IE</span><br><span class="line">     */</span><br><span class="line">    if(!uaMatch)&#123;</span><br><span class="line">      if(userAgent.match(/msie ([\d.]+)/)!=null)&#123;</span><br><span class="line">        uaMatch = userAgent.match(/msie ([\d.]+)/);</span><br><span class="line">        window.browser[&apos;name&apos;] = &apos;ie&apos;;</span><br><span class="line">        window.browser[&apos;version&apos;] = uaMatch[1];</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        /**</span><br><span class="line">         * IE10</span><br><span class="line">         */</span><br><span class="line">        if(isIE() &amp;&amp; !!document.attachEvent &amp;&amp; (function()&#123;&quot;use strict&quot;;return !this;&#125;()))&#123;</span><br><span class="line">          window.browser[&apos;name&apos;] = &apos;ie&apos;;</span><br><span class="line">          window.browser[&apos;version&apos;] = &apos;10&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">        /**</span><br><span class="line">         * IE11</span><br><span class="line">         */</span><br><span class="line">        if(isIE() &amp;&amp; !document.attachEvent)&#123;</span><br><span class="line">          window.browser[&apos;name&apos;] = &apos;ie&apos;;</span><br><span class="line">          window.browser[&apos;version&apos;] = &apos;11&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    /**</span><br><span class="line">     * 注册判断方法</span><br><span class="line">     */</span><br><span class="line">    if(!$.isIE)&#123;</span><br><span class="line">      $.extend(&#123;</span><br><span class="line">        isIE:function()&#123;</span><br><span class="line">          return (window.browser.name == &apos;ie&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(!$.isChrome)&#123;</span><br><span class="line">      $.extend(&#123;</span><br><span class="line">        isChrome:function()&#123;</span><br><span class="line">          return (window.browser.name == &apos;chrome&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(!$.isFirefox)&#123;</span><br><span class="line">      $.extend(&#123;</span><br><span class="line">        isFirefox:function()&#123;</span><br><span class="line">          return (window.browser.name == &apos;firefox&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(!$.isOpera)&#123;</span><br><span class="line">      $.extend(&#123;</span><br><span class="line">        isOpera:function()&#123;</span><br><span class="line">          return (window.browser.name == &apos;opera&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(!$.isSafari)&#123;</span><br><span class="line">      $.extend(&#123;</span><br><span class="line">        isSafari:function()&#123;</span><br><span class="line">          return (window.browser.name == &apos;safari&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(jQuery, window, document);</span><br></pre></td></tr></table></figure>
+
+
+
+#php 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">变量的命名  $a_b_c  类 AaBnCx  一般函数aBbCc</span><br></pre></td></tr></table></figure>
+
+
+### 获取下一页逻辑
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">getGoodsList(flag) &#123;</span><br><span class="line">  var param = &#123;</span><br><span class="line">    page: this.page,</span><br><span class="line">    pageSize: this.pageSize,</span><br><span class="line">    sort: this.sortFlag ? 1 : -1,</span><br><span class="line">    priceLevel: this.priceChecked</span><br><span class="line">  &#125;;</span><br><span class="line">  this.loading = true;</span><br><span class="line">  goodsList(param).then(response =&gt; &#123;</span><br><span class="line">    var res = response.data;</span><br><span class="line">    //loading加载</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      this.loading = false;</span><br><span class="line">    &#125;, 3000);</span><br><span class="line">    if (res.status == &quot;200&quot;) &#123;</span><br><span class="line">      if (flag) &#123;</span><br><span class="line">        this.goodsList = this.goodsList.concat(res.result.list);</span><br><span class="line">        if (res.result.count &lt; 4) &#123;</span><br><span class="line">          this.busy = true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          this.busy = false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        this.goodsList = res.result.list;</span><br><span class="line">        this.busy = false;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.goodsList = [];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    var angejiaLogo = &apos;&apos;;</span><br><span class="line">    var angejiaCulture = &apos;%c理想与激情 (Dream &amp; Passion)\n做最好的自己，把事情做到极致 (Do Your Best, Make Things Best.)\n目标一致，团队一心(One Goal, One Team)\n专注要事，快速行动 (Stay Focused and Move Fast)\n帮助他人成功 (Make Others Great)\n&apos;;</span><br><span class="line">    var angejiaZhaopin = &apos;%c加入橙诺，你的人生会更精彩。\n&apos;;</span><br><span class="line"></span><br><span class="line">    if (window.console &amp;&amp; window.console.log) &#123;</span><br><span class="line">        console.log(angejiaLogo + angejiaCulture + angejiaZhaopin, &quot;color:#FF8000&quot;, &quot;color:#F1A40E&quot;);</span><br><span class="line">        console.log(&apos;%c请将简历发送至：xb.wang@chengnuozx.com（邮件标题请以“姓名-应聘XX职位-来自console”命名）。&apos;, &quot;color:red&quot;);</span><br><span class="line">        console.log(&apos;%c职位介绍：&apos;, &apos;color:red&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+### 获取URL的参数
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(function ($) &#123;</span><br><span class="line">    $.getUrlParam = function (name) &#123;</span><br><span class="line">        var reg = new RegExp(&quot;(^|&amp;)&quot; + name + &quot;=([^&amp;]*)(&amp;|$)&quot;);</span><br><span class="line">        var r = window.location.search.substr(1).match(reg);</span><br><span class="line">        if (r != null) return unescape(r[2]);</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line"></span><br><span class="line">var page = $.getUrlParam(&apos;page&apos;);</span><br></pre></td></tr></table></figure>
+
+
+### 编码转换
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">decodeURI(userName))</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">### 面试题</span><br></pre></td></tr></table></figure>
+
+- 本地离线存储 
+localStorage 长期存储数据，浏览器关闭后数据不丢失;
+sessionStorage 的数据在浏览器关闭后自动删除;
+
+- 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。
+cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。
+sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### rem处理</span><br></pre></td></tr></table></figure>
+
+著作权归作者所有。
+商业转载请联系作者获得授权,非商业转载请注明出处。
+链接:http://caibaojian.com/mobile-responsive.html
+来源:http://caibaojian.com
+
+&lt;!doctype HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+&lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover&quot;/&gt;
+&lt;title&gt;lib.flexible 简化版&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+(function(e,t){var i=document,n=window;var l=i.documentElement;var r,a;var d,o=document.createElement(&quot;style&quot;);var s;function m(){var i=l.getBoundingClientRect().width;if(!t){t=540}if(i&gt;t){i=t}var n=i*100/e;o.innerHTML=&quot;html{font-size:&quot;+n+&quot;px;}&quot;}r=i.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);a=&quot;width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover&quot;;if(r){r.setAttribute(&quot;content&quot;,a)}else{r=i.createElement(&quot;meta&quot;);r.setAttribute(&quot;name&quot;,&quot;viewport&quot;);r.setAttribute(&quot;content&quot;,a);if(l.firstElementChild){l.firstElementChild.appendChild(r)}else{var c=i.createElement(&quot;div&quot;);c.appendChild(r);i.write(c.innerHTML);c=null}}m();if(l.firstElementChild){l.firstElementChild.appendChild(o)}else{var c=i.createElement(&quot;div&quot;);c.appendChild(o);i.write(c.innerHTML);c=null}n.addEventListener(&quot;resize&quot;,function(){clearTimeout(s);s=setTimeout(m,300)},false);n.addEventListener(&quot;pageshow&quot;,function(e){if(e.persisted){clearTimeout(s);s=setTimeout(m,300)}},false);if(i.readyState===&quot;complete&quot;){i.body.style.fontSize=&quot;16px&quot;}else{i.addEventListener(&quot;DOMContentLoaded&quot;,function(e){i.body.style.fontSize=&quot;16px&quot;},false)}})(750,750);
+&lt;/script&gt;
+&lt;style&gt;
+/*
+需要注意的是：
+样式的reset中需先设置html字体的初始化大小为50px，这是为了防止js被禁用或者加载不到或者执行错误而做的兼容
+样式的reset中需先设置body字体的初始化大小为16px，这是为了让body内的字体大小不继承父级html元素的50px，而用系统默认的16px
+*/
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,hr,thead,tbody,tfoot,th,td{margin:0;padding:0;}
+ul,ol{list-style:none;}
+a{text-decoration:none;}
+html{-ms-text-size-adjust:none;-webkit-text-size-adjust:none;text-size-adjust:none;font-size:50px;}
+body{line-height:1.5;font-size:16px;}
+body,button,input,select,textarea{font-family:&apos;helvetica neue&apos;,tahoma,&apos;hiragino sans gb&apos;,stheiti,&apos;wenquanyi micro hei&apos;,\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;}
+b,strong{font-weight:bold;}
+i,em{font-style:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+table th,table td{border:1px solid #ddd;padding:5px;}
+table th{font-weight:inherit;border-bottom-width:2px;border-bottom-color:#ccc;}
+img{border:0 none;width:auto\9;max-width:100%;vertical-align:top;}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;vertical-align:baseline;}
+button,html input[type=&quot;button&quot;],input[type=&quot;reset&quot;],input[type=&quot;submit&quot;]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],input[disabled]{cursor:default;}
+input[type=&quot;checkbox&quot;],input[type=&quot;radio&quot;]{box-sizing:border-box;padding:0;}
+input[type=&quot;search&quot;]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type=&quot;search&quot;]::-webkit-search-decoration{-webkit-appearance:none;}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+input{line-height:normal!important;}
+}
+select[size],select[multiple],select[size][multiple]{border:1px solid #AAA;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}
+audio,canvas,video,progress{display:inline-block;}
+
+
+.g-doc{width:6.4rem;margin:0px auto;}
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;g-doc&quot;&gt;
+        &lt;!-- 页面结构写在这里 --&gt;
+        &lt;!-- 页面结构写在这里 --&gt;
+        &lt;!-- 页面结构写在这里 --&gt;
+        &lt;!-- 页面结构写在这里 --&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Nginx 反向代理</span><br></pre></td></tr></table></figure>
+
+server {
+    #侦听的80端口
+    listen       80;
+    server_name  localhost;
+    #设定查看Nginx状态的地址
+    location /nginxstatus{
+         stub_status on;
+         access_log on;
+         auth_basic &quot;nginxstatus&quot;;
+         auth_basic_user_file htpasswd;
+    }
+    #匹配以jsp结尾的，tomcat的网页文件是以jsp结尾
+    location / {
+        index index.html;
+
+        proxy_pass   http://0.0.0.0:3000;    #在这里设置一个代理(最重要的一步)
+
+        #以下是一些反向代理的配置可删除
+        proxy_redirect             off; 
+        #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP
+        proxy_set_header           Host $host; 
+        proxy_set_header           X-Real-IP $remote_addr; 
+        proxy_set_header           X-Forwarded-For $proxy_add_x_forwarded_for; 
+        client_max_body_size       10m; #允许客户端请求的最大单文件字节数
+        client_body_buffer_size    128k; #缓冲区代理缓冲用户端请求的最大字节数
+        proxy_connect_timeout      300; #nginx跟后端服务器连接超时时间(代理连接超时)
+        proxy_send_timeout         300; #后端服务器数据回传时间(代理发送超时)
+        proxy_read_timeout         300; #连接成功后，后端服务器响应时间(代理接收超时)
+        proxy_buffer_size          4k; #设置代理服务器（nginx）保存用户头信息的缓冲区大小
+        proxy_buffers              4 32k; #proxy_buffers缓冲区，网页平均在32k以下的话，这样设置
+        proxy_busy_buffers_size    64k; #高负荷下缓冲大小（proxy_buffers*2）
+        proxy_temp_file_write_size 64k; #设定缓存文件夹大小，大于这个值，将从upstream服务器传
+    }
+}
+```
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/css/images/WeChanQR.jpeg',
+  alipayImage: '/css/images/AliPayQR.jpeg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/18/Hexo更换主题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Hexo更换主题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 前端博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            前端博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 xiaobeila All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
